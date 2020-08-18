@@ -4,3 +4,8 @@ spring:
     username: root
     password: root1997
     driver-class-name: com.mysql.cj.jdbc.Driver
+  activiti:
+    database-schema-update: true
+    # 开启历史库
+    db-history-used: true
+    history-level: audit

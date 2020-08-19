@@ -19,10 +19,24 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
     <packaging>war</packaging>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>5.2.8.RELEASE</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -57,7 +71,7 @@
 
         <dependency>
             <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-taglibs</artifactId>
+            <artifactId>spring-security-web</artifactId>
             <version>5.3.4.RELEASE</version>
         </dependency>
         <dependency>
@@ -67,6 +81,8 @@
         </dependency>
 
     </dependencies>
+
+
 
 
 </project>

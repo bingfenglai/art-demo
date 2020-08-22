@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="155.0">org.springframework.security.web.FilterChainProxy.FilterChainValidator</node>
+    <node x="197.9" y="239.0">org.springframework.security.web.FilterChainProxy.NullFilterChainValidator</node>
+    <node x="275.93333333333334" y="0.0">org.springframework.security.web.FilterChainProxy</node>
+    <node x="289.0" y="155.0">org.springframework.security.web.FilterChainProxy.VirtualFilterChain</node>
+    <node x="0.0" y="427.0">org.springframework.security.web.DefaultSecurityFilterChain</node>
+    <node x="39.5" y="318.0">org.springframework.security.web.SecurityFilterChain</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.security.web.FilterChainProxy.FilterChainValidator" target="org.springframework.security.web.FilterChainProxy">
+      <point x="0.0" y="-17.0" />
+      <point x="134.5" y="130.0" />
+      <point x="319.26666666666665" y="130.0" />
+      <point x="-86.66666666666669" y="52.5" />
+    </edge>
+    <edge source="org.springframework.security.web.FilterChainProxy.VirtualFilterChain" target="org.springframework.security.web.FilterChainProxy">
+      <point x="0.0" y="-17.0" />
+      <point x="412.5" y="130.0" />
+      <point x="405.93333333333334" y="130.0" />
+      <point x="0.0" y="52.5" />
+    </edge>
+    <edge source="org.springframework.security.web.FilterChainProxy.NullFilterChainValidator" target="org.springframework.security.web.FilterChainProxy.FilterChainValidator">
+      <point x="-78.5" y="-17.0" />
+      <point x="276.4" y="214.0" />
+      <point x="134.5" y="214.0" />
+      <point x="0.0" y="17.0" />
+    </edge>
+    <edge source="org.springframework.security.web.DefaultSecurityFilterChain" target="org.springframework.security.web.SecurityFilterChain">
+      <point x="0.0" y="-41.0" />
+      <point x="0.0" y="29.5" />
+    </edge>
+    <edge source="org.springframework.security.web.FilterChainProxy.NullFilterChainValidator" target="org.springframework.security.web.FilterChainProxy">
+      <point x="78.5" y="-17.0" />
+      <point x="433.4" y="214.0" />
+      <point x="546.5" y="214.0" />
+      <point x="546.5" y="130.0" />
+      <point x="492.6" y="130.0" />
+      <point x="86.66666666666669" y="52.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="168.5" y="205.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

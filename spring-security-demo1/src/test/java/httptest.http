@@ -1,0 +1,23 @@
+GET http://127.0.0.1:8081/csrf/getToken
+Cookie:
+    JSESSIONID:8A2AD73C079F9807472E68EEFD896D80
+Content-Type: application/json
+
+###
+POST http://127.0.0.1:8081/login
+Content-Type: application/json
+Cookie:
+    JSESSIONID:8A2AD73C079F9807472E68EEFD896D80
+{
+"username": "user",
+"password": "user",
+"_csrf": "31853e06-c7f9-4d39-a71d-2a7cb1df627d"
+
+}
+
+
+
+
+
+###
+6859a1c4-82e5-4aed-b01d-7f8bc44c6bfa

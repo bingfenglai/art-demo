@@ -21,28 +21,31 @@
         <security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 
 
-        <security:form-login
-                login-page="/login.html"
-                login-processing-url="/login"
-                default-target-url="/pages/index.html"
-                authentication-failure-url="/failure.html"
-                username-parameter="username"
-                password-parameter="password"/>
-        <security:logout
-                logout-url="/logout"
-                logout-success-url="/login.html"/>
+<!--        <security:form-login-->
+<!--                login-page="/login.html"-->
+<!--                login-processing-url="/login"-->
+<!--                default-target-url="/pages/index.html"-->
+<!--                authentication-failure-url="/failure.html"-->
+<!--                username-parameter="username"-->
+<!--                password-parameter="password"/>-->
+<!--        <security:logout-->
+<!--                logout-url="/logout"-->
+<!--                logout-success-url="/login.html"/>-->
 
     </security:http>
     <!--设置Spring Security认证用户信息的来源-->
     <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
-                <security:user name="user" password="{noop}user"
-                               authorities="ROLE_USER" />
-                <security:user name="admin" password="{noop}admin"
-                               authorities="ROLE_ADMIN" />
-            </security:user-service>
+<!--        <security:authentication-provider>-->
+<!--            <security:user-service>-->
+<!--                <security:user name="user" password="{noop}user"-->
+<!--                               authorities="ROLE_USER" />-->
+<!--                <security:user name="admin" password="{noop}admin"-->
+<!--                               authorities="ROLE_ADMIN" />-->
+<!--            </security:user-service>-->
 
+<!--        </security:authentication-provider>-->
+        <security:authentication-provider user-service-ref="userService2Impl">
         </security:authentication-provider>
     </security:authentication-manager>
+
 </beans>

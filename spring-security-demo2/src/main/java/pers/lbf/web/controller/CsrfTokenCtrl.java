@@ -28,6 +28,7 @@ public class CsrfTokenCtrl {
         HashMap<String, String> map = new HashMap<>();
         map.put("csrf_header",token.getHeaderName());
         map.put("csrf",token.getToken());
+        System.out.println(token.getToken());
         return map;
     }
 

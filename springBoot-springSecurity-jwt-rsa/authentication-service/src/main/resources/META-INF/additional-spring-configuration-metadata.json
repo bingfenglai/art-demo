@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "lbf.key.public-key-path",
+      "type": "java.lang.String",
+      "description": "Description for lbf.key.public-key-path."
+    },
+    {
+      "name": "lbf.key.private-key-path",
+      "type": "java.lang.String",
+      "description": "Description for lbf.key.private-key-path."
+    },
+    {
+      "name": "lbf.key.publicKeyPath",
+      "type": "java.lang.String",
+      "description": "Description for lbf.key.publicKeyPath."
+    },
+    {
+      "name": "lbf.key.privateKeyPath",
+      "type": "java.lang.String",
+      "description": "Description for lbf.key.privateKeyPath."
+    }
+  ] }

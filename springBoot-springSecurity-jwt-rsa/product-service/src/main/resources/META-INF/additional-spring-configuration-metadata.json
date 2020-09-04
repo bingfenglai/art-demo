@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "lbf.key.publicKeyPath",
+      "type": "java.lang.String",
+      "description": "Description for lbf.key.publicKeyPath."
+  }
+] }

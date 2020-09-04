@@ -3,6 +3,7 @@ package pers.lbf.ssjr.authenticationservice.pojo.vo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import pers.lbf.ssjr.authenticationservice.web.deserializer.CustomAuthorityDeserializer;
 
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import java.util.List;
  * @version 1.0
  * @date 2020/9/3 16:20
  */
+
 public class UserAuthVO implements Serializable {
 
     private String username;

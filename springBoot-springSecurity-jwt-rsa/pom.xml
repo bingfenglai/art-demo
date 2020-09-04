@@ -13,6 +13,7 @@
         <version>2.3.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <packaging>pom</packaging>
     <groupId>pers.lbf</groupId>
     <artifactId>springboot-springSecurity-jwt-rsa</artifactId>

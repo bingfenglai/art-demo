@@ -7,7 +7,7 @@ import pers.lbf.ssjr.common.utils.RsaUtils;
 import javax.annotation.PostConstruct;
 import java.security.PublicKey;
 
-/**
+/**读取公钥配置类
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/9/4 10:05

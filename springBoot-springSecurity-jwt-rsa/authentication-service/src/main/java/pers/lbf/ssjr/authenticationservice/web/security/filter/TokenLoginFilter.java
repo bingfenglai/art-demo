@@ -3,6 +3,7 @@ package pers.lbf.ssjr.authenticationservice.web.security.filter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +16,7 @@ import pers.lbf.ssjr.common.utils.JwtUtils;
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +27,6 @@ import java.util.Map;
  * @version 1.0
  * @date 2020/9/3 12:11
  */
-
 public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
 
     /**
@@ -85,12 +86,34 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
                     new UsernamePasswordAuthenticationToken(
                             user.getUsername(),
                             user.getPassword()));
-        }catch (Exception e) {
+        }
+        catch (IOException e){
+            e.printStackTrace();
 
+        }
+        catch (BadCredentialsException e) {
+            //用户名或密码错误返回json数据提示，实际项目中这里可能是重定向到
+            try {
+                //生成消息
+                Map<String, Object> map = new HashMap<>();
+                map.put("code", HttpServletResponse.SC_OK);
+                map.put("msg", "用户名或密码错误");
+                //响应数据
+                response.setContentType("application/json;charset=utf-8");
+                response.setStatus(HttpServletResponse.SC_OK);
+                PrintWriter writer = response.getWriter();
+                writer.write(new ObjectMapper().writeValueAsString(map));
+                writer.flush();
+                writer.close();
+            } catch (Exception e1) {
+                throw new RuntimeException(e1);
+            }
             throw new RuntimeException(e);
         }
+        throw new RuntimeException("未知错误");
+        }
 
-    }
+
 
     /**这个方法会在验证成功时被调用
      *用户登录成功后，生成token,并且返回json数据给前端
@@ -110,7 +133,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
         user.setUsername(authResult.getName());
         user.setAuthorities((List<SimpleGrantedAuthority>) authResult.getAuthorities());
 
-        //使用jwt创建一个token
+        //使用jwt创建一个token，私钥加密
         String token = JwtUtils.generateTokenExpireInMinutes(user,prop.getPrivateKey(),15);
 
         //返回token

@@ -3,7 +3,8 @@ package pers.lbf.ssjr.common.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
-/**为了方便后期获取token中的用户信息，将token中载荷部分单独封装成一个对象
+/**为了方便后期获取token中的用户信息，
+ * 将token中载荷部分单独封装成一个对象
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/9/2 22:24

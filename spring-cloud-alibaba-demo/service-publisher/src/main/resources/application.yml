@@ -1,0 +1,15 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: service-publisher
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.17.172.49:8848
+        weight: 100
+
+mybatis:
+  lazy-initialization: true
+  configuration:
+    map-underscore-to-camel-case: true

@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "subscriber.nacos.service.url",
+      "type": "java.lang.String",
+      "description": "Description for subscriber.service.nacos.service.url."
+    }
+  ] }

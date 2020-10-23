@@ -1,0 +1,10 @@
+server:
+  port: 9003
+  servlet:
+    context-path: /config
+spring:
+  cloud:
+    nacos:
+      server-addr: 172.17.172.49:8848
+  application:
+    name: service-config

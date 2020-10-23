@@ -1,0 +1,18 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: service-subscriber
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.17.172.49:8848
+
+
+
+
+# 服务订阅者订阅的服务以及负载均衡策略配置
+service-publisher:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+  service-url: http://service-publisher/

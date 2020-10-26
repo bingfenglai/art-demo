@@ -1,0 +1,11 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: sentinel-demo
+  cloud:
+    nacos:
+      server-addr: 172.17.172.49:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080

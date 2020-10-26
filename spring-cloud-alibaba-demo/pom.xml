@@ -6,6 +6,7 @@
         <module>service-publisher</module>
         <module>service-subscriber</module>
         <module>service-config</module>
+        <module>sentinel-demo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

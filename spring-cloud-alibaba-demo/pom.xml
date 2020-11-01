@@ -7,6 +7,7 @@
         <module>service-subscriber</module>
         <module>service-config</module>
         <module>sentinel-demo</module>
+        <module>sentinel-demo-client</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -44,6 +45,18 @@
                     <version>${spring.cloud.alibaba.version}</version>
                     <type>pom</type>
                     <scope>import</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>com.alibaba.csp</groupId>
+                    <artifactId>sentinel-datasource-nacos</artifactId>
+                    <version>1.8.0</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>com.alibaba.csp</groupId>
+                    <artifactId>sentinel-annotation-aspectj</artifactId>
+                    <version>1.8.0</version>
                 </dependency>
 
                 <dependency>

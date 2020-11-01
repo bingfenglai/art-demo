@@ -1,5 +1,7 @@
 server:
   port: 9004
+  tomcat:
+    uri-encoding: UTF-8
 spring:
   application:
     name: sentinel-demo
@@ -9,3 +11,16 @@ spring:
     sentinel:
       transport:
         dashboard: 127.0.0.1:8080
+      datasource:
+        ds:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-sentinel
+            groupId: DEFAULT_GROUP
+            ruleType: flow
+  http:
+    encoding:
+      enabled: true
+      charset: utf-8
+      force: true
+

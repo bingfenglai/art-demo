@@ -2,6 +2,7 @@ package pers.lbf.spring.cloud.alibaba.demo.sentinel.demo.web.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pers.lbf.spring.cloud.alibaba.demo.sentinel.demo.vo.ResultVO;
 
@@ -26,11 +27,19 @@ public class DemoController {
 //            )
     @GetMapping("/info")
     public ResultVO info() {
-        HashMap<String, Object> map = new HashMap<>(3);
-        map.put("code","0");
-        map.put("msg","Wxb: Java开发实践");
+
         throw new RuntimeException("sleep~~~~~");
 //        return map;
+    }
+
+
+    @GetMapping("/getInfoById")
+    public ResultVO getInfoById(@RequestParam Integer id) {
+        HashMap<Object, Object> map = new HashMap<>(3);
+        map.put("id",id);
+        map.put("name","Java开发实践");
+        map.put("type","微信公众平台");
+        return new ResultVO<>(map);
     }
 
     /**降级以及其他异常

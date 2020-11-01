@@ -12,12 +12,44 @@ spring:
       transport:
         dashboard: 127.0.0.1:8080
       datasource:
-        ds:
+#        名字随便起
+        ds1:
           nacos:
             server-addr: ${spring.cloud.nacos.server-addr}
             dataId: ${spring.application.name}-sentinel
             groupId: DEFAULT_GROUP
-            ruleType: flow
+#            规则类型，这里是限流规则
+            #取值见： org.springframework.cloud.alibaba.sentinel.datasource.RuleType
+            rule-type: flow
+        ds2:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-sentinel-degrade
+            groupId: DEFAULT_GROUP
+#            降级规则
+            rule-type: degrade
+        ds3:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-sentinel-param-flow
+            groupId: DEFAULT_GROUP
+            #            热点参数限流规则
+            rule-type: param-flow
+        ds4:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-sentinel-system
+            groupId: DEFAULT_GROUP
+            #            系统自适应限流
+            rule-type: system
+        ds5:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-sentinel-authority
+            groupId: DEFAULT_GROUP
+            #            系统自适应限流
+            rule-type: authority
+
   http:
     encoding:
       enabled: true

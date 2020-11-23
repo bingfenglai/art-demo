@@ -9,6 +9,9 @@
         <module>sentinel-demo</module>
         <module>sentinel-demo-client</module>
         <module>service-gateway</module>
+        <module>service-dubbo-interface</module>
+        <module>service-dubbo-user</module>
+        <module>web-user</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -16,6 +19,7 @@
         <version>2.2.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>pers.lbf</groupId>
     <artifactId>spring-cloud-alibaba-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -32,6 +36,9 @@
         <mybatis.version>2.1.2</mybatis.version>
         <spring.cloud.version>Hoxton.SR5</spring.cloud.version>
         <dubbo.version>2.7.8</dubbo.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
     </properties>
 
     <dependencyManagement>
@@ -62,8 +69,7 @@
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
                 <version>${dubbo.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <scope>compile</scope>
             </dependency>
 
             <dependency>
@@ -106,13 +112,13 @@
     </dependencyManagement>
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <!--    <build>-->
+    <!--        <plugins>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.springframework.boot</groupId>-->
+    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
 
 </project>

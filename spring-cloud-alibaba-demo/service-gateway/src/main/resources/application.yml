@@ -1,5 +1,5 @@
 server:
-  address: 80
+  port: 80
 spring:
   application:
     name: gateway
@@ -12,25 +12,30 @@ spring:
         locator:
           enabled: true
       routes:
+        - id: web-user
+          uri: lb://web-user
+          predicates:
+            - Path=/user/**
         - id: service-publisher
           uri: lb://service-publisher
           #          过滤
           predicates:
-            #            满足路径条件
-            - Path=/info/**
+            #            满足路径条件,且路径是真实存在的
+            - Path=/test/**
             #            相当于白名单
-            - Host=**.foo.org
+            #            - Host=**.foo.org
             #            允许的请求方法
-            - Method=GET
+            #            - Method=GET
             #            请求头需要带的值，key-value的形式，value为正则表达式
-            - Header=X-Request-Id, \d+
+            #            - Header=X-Request-Id, \d+
             #            请求参数，key-value的形式，value为正则表达式
-            - Query=foo, ba.
+            #            - Query=foo, ba.
             #            cookie参数，key-value的形式，value为正则表达式
-            - Cookie=chocolate, ch.p
+            #            - Cookie=chocolate, ch.p
             #            在设定时间之后路由
-            - After=2020-11-20T06:06:06+08:00[Asia/Shanghai]
+            #            - After=2020-11-20T06:06:06+08:00[Asia/Shanghai]
             #            在设定时间之前
-            - Before=2021-01-20T06:06:06+08:00[Asia/Shanghai]
+            #            - Before=2021-01-20T06:06:06+08:00[Asia/Shanghai]
             #            在这个时间段可访问
-            - Between=2020-11-20T06:06:06+08:00[Asia/Shanghai]，2021-01-20T06:06:06+08:00[Asia/Shanghai]
+#            - Between=2020-11-20T06:06:06+08:00[Asia/Shanghai]，2021-01-20T06:06:06+08:00[Asia/Shanghai]
+

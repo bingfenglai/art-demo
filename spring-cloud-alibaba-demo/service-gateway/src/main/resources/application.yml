@@ -1,0 +1,36 @@
+server:
+  address: 80
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+    gateway:
+      #      启用从注册中心动态更新路由
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: service-publisher
+          uri: lb://service-publisher
+          #          过滤
+          predicates:
+            #            满足路径条件
+            - Path=/info/**
+            #            相当于白名单
+            - Host=**.foo.org
+            #            允许的请求方法
+            - Method=GET
+            #            请求头需要带的值，key-value的形式，value为正则表达式
+            - Header=X-Request-Id, \d+
+            #            请求参数，key-value的形式，value为正则表达式
+            - Query=foo, ba.
+            #            cookie参数，key-value的形式，value为正则表达式
+            - Cookie=chocolate, ch.p
+            #            在设定时间之后路由
+            - After=2020-11-20T06:06:06+08:00[Asia/Shanghai]
+            #            在设定时间之前
+            - Before=2021-01-20T06:06:06+08:00[Asia/Shanghai]
+            #            在这个时间段可访问
+            - Between=2020-11-20T06:06:06+08:00[Asia/Shanghai]，2021-01-20T06:06:06+08:00[Asia/Shanghai]

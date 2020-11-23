@@ -8,6 +8,7 @@
         <module>service-config</module>
         <module>sentinel-demo</module>
         <module>sentinel-demo-client</module>
+        <module>service-gateway</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -29,63 +30,80 @@
         <spring.boot.version>2.2.5.RELEASE</spring.boot.version>
         <druid.version>1.1.12</druid.version>
         <mybatis.version>2.1.2</mybatis.version>
+        <spring.cloud.version>Hoxton.SR5</spring.cloud.version>
+        <dubbo.version>2.7.8</dubbo.version>
     </properties>
 
-        <dependencyManagement>
-            <dependencies>
-                <dependency>
-                    <groupId>org.mybatis.spring.boot</groupId>
-                    <artifactId>mybatis-spring-boot-starter</artifactId>
-                    <version>${mybatis.version}</version>
-                </dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
 
-                <dependency>
-                    <groupId>com.alibaba.cloud</groupId>
-                    <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                    <version>${spring.cloud.alibaba.version}</version>
-                    <type>pom</type>
-                    <scope>import</scope>
-                </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-                <dependency>
-                    <groupId>com.alibaba.csp</groupId>
-                    <artifactId>sentinel-datasource-nacos</artifactId>
-                    <version>1.8.0</version>
-                </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-                <dependency>
-                    <groupId>com.alibaba.csp</groupId>
-                    <artifactId>sentinel-annotation-aspectj</artifactId>
-                    <version>1.8.0</version>
-                </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-web</artifactId>
-                    <version>${spring.boot.version}</version>
-                </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-datasource-nacos</artifactId>
+                <version>1.8.0</version>
+            </dependency>
 
-                <dependency>
-                    <groupId>com.alibaba</groupId>
-                    <artifactId>druid</artifactId>
-                    <version>${druid.version}</version>
-                </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-annotation-aspectj</artifactId>
+                <version>1.8.0</version>
+            </dependency>
 
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-test</artifactId>
-                    <scope>test</scope>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>org.junit.vintage</groupId>
-                            <artifactId>junit-vintage-engine</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
-            </dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
 
-        </dependencyManagement>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
 
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
 
 
     <build>

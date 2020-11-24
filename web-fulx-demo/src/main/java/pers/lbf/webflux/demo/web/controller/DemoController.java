@@ -19,6 +19,12 @@ import java.util.concurrent.Future;
 /**WebFlux 的Netty是多路IO复用模型
  * 对于服务器而言可以使用少数线程处理多个任务，
  * 但对于客户端来说，服务器的响应时间并不会得到提升，它还是会等待服务器执行完毕
+ *
+ * 而对于Spring当中使用@EnableAsync 和 @Async注解声明的异步调用则会
+ * 启动一个新的进程执行异步方法，而主线程继续往下执行，直到主线程当中需要从
+ * Future中获取异步调用结果时，才会再次等待，直到获取到结果后才会往下执行，当然
+ * 你可以指定超时时间
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @Description TODO

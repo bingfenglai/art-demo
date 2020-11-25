@@ -8,3 +8,7 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
         weight: 100
+#        设置nacos客户端组件打印日志级别，避免循环打印一些不需要的日志
+logging:
+  level:
+    com.alibaba.nacos: warn

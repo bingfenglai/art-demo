@@ -1,0 +1,145 @@
+//------------------------------------------------------------------------------------------------
+//	MISSILE SILO
+//------------------------------------------------------------------------------------------------
+UnitType Missile_Silo
+{
+	ownerType = PlayerOnly
+	parent = Building
+	icon = icon_unit_icbmsilo
+	properties {
+		SizeX = 2
+		SizeY = 2
+		FootprintSizeX = 3.5
+		FootprintSizeY = 3.5
+		OffsetX = 0.75
+		OffsetY = 0.75
+		rps = BuildingCombat
+		mass = 1
+		DisplayNameScenEdit = tx_utn_MissSilo_sname
+		VerboseTooltip = vtt_unit_MissileSilo
+		displayName = tx_utn_MissSilo_name
+		displayNamePlural = tx_utn_MissSilo_pname
+		HitPoints = 2000
+
+		// The missile defaults to not firing on its own.
+		stance = HoldFire
+	}
+	sounds {
+		sndSelection = ["silo_select"]
+    	}
+	abilities = [
+		Produce { 
+			NoRallyFlag = 1; 
+			ProduceOrdnance = 1;
+		}
+		Attack { range = 500; 
+						angularRange = 360; 
+						reloadTime = 5; 	// we don't need a long reload time as we can only produce 1 at a time
+						applyDamageTime = 1.73; 
+						damage = 200000; 
+						missileName = "ICBM"; 
+						ignoreBlocking = 1; 
+						areaDamageRadius = 18; 
+						areaDamageFriendlyRatio = 1.0 
+						packTime = 2.0; 
+						unpackTime = 2.0;
+						ordnance = 1;	// we have at most 1 missile at any time
+						startWithNoOrdnance = 1  // and we start with no missile
+						weaponType = Nuke
+						}
+		LOS { range = 150 }
+	]
+}
+
+
+
+//------------------------------------------------------------------------------------------------
+//	MISSILE SILO - VISUAL INFO
+//------------------------------------------------------------------------------------------------
+
+//------------------------------------------------
+//	EPOCH 15
+//------------------------------------------------
+UnitModel Missile_Silo
+{
+	Parent		= BaseBuilding
+	DefaultModel 	= bld_missilesilo15.NIF
+	ChildNames	= [ ExplSelectorBuild_Small Muzzle_Silo LargeGlow ]
+	States 		= [
+					{ 	StateName = Idle	AnimName = bld_missilesilo15_idle.KF  }
+					{ 	StateName = Attack1	AnimName = bld_missilesilo15_attack.KF }
+					{ 	StateName = Pack	AnimName = bld_missilesilo15_pack.KF  }
+					{ 	StateName = Unpack	AnimName = bld_missilesilo15_unpack.KF  }
+				]
+}
+
+
+UnitType AIMissile_Silo
+{
+	ownerType = PlayerOnly
+	parent = Building
+	icon = icon_unit_icbmsilo
+	properties {
+		SizeX = 2
+		SizeY = 2
+		FootprintSizeX = 3.5
+		FootprintSizeY = 3.5
+		OffsetX = 0.75
+		OffsetY = 0.75
+		rps = BuildingCombat
+		mass = 1
+		DisplayNameScenEdit = tx_utn_MissSilo_sname
+		VerboseTooltip = vtt_unit_MissileSilo
+		displayName = tx_utn_MissSilo_name
+		displayNamePlural = tx_utn_MissSilo_pname
+		HitPoints = 4000
+
+		// The missile defaults to not firing on its own.
+		//stance = HoldFire
+	}
+	sounds {
+		sndSelection = ["silo_select"]
+    	}
+	abilities = [
+		Produce { 
+		}
+		Attack { range = 450; 
+						angularRange = 360; 
+						reloadTime = 20; 	// we don't need a long reload time as we can only produce 1 at a time
+						applyDamageTime = 1.73; 
+						damage = 200000; 
+						missileName = "AI_ICBM"; 
+						ignoreBlocking = 1; 
+						areaDamageRadius = 18; 
+						areaDamageFriendlyRatio = 1.0 
+						packTime = 2.0; 
+						unpackTime = 2.0;
+						//ordnance = 1;	// we have at most 1 missile at any time
+						//startWithNoOrdnance = 1  // and we start with no missile
+						weaponType = Nuke
+						}
+		LOS { range = 150 }
+	]
+}
+
+
+
+//------------------------------------------------------------------------------------------------
+//	MISSILE SILO - VISUAL INFO
+//------------------------------------------------------------------------------------------------
+
+//------------------------------------------------
+//	EPOCH 15
+//------------------------------------------------
+UnitModel AIMissile_Silo
+{
+	Parent		= BaseBuilding
+	DefaultModel 	= bld_missilesilo15.NIF
+	ChildNames	= [ ExplSelectorBuild_Small Muzzle_Silo LargeGlow ]
+	States 		= [
+					{ 	StateName = Idle	AnimName = bld_missilesilo15_idle.KF  }
+					{ 	StateName = Attack1	AnimName = bld_missilesilo15_attack.KF }
+					{ 	StateName = Pack	AnimName = bld_missilesilo15_pack.KF  }
+					{ 	StateName = Unpack	AnimName = bld_missilesilo15_unpack.KF  }
+				]
+}

@@ -1,0 +1,15 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: @artifactId@
+
+  kafka:
+    bootstrap-servers: 192.168.3.6:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: 1
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432

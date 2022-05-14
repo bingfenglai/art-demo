@@ -13,7 +13,6 @@
 			    http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
-
     <context:component-scan base-package="pers.lbf.service"/>
     <import resource="classpath:spring-security-config.xml"/>
 

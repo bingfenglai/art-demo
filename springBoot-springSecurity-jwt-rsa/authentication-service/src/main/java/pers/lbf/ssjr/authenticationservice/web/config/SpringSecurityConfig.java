@@ -17,7 +17,9 @@ import pers.lbf.ssjr.authenticationservice.web.handler.MyAuthenticationEntryPoin
 import pers.lbf.ssjr.authenticationservice.web.security.filter.TokenLoginFilter;
 import pers.lbf.ssjr.authenticationservice.web.security.filter.TokenVerifyFilter;
 
-/**spring security配置类
+/**
+ * spring security配置类
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/9/3 15:41
@@ -34,15 +36,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private AuthServerRsaKeyProperties properties;
 
     @Bean
-    public BCryptPasswordEncoder myPasswordEncoder(){
+    public BCryptPasswordEncoder myPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 
-    /**配置自定义过滤器
+    /**
+     * 配置自定义过滤器
+     *
+     * @param http
      * @author 赖柄沣 bingfengdev@aliyun.com
      * @date 2020-09-03 15:53:45
-     * @param http
      * @version 1.0
      */
     @Override
@@ -53,14 +57,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         //允许匿名访问的方法
         http.authorizeRequests().antMatchers("/login").anonymous();
-                //其他需要鉴权
-                //.anyRequest().authenticated();
+        //其他需要鉴权
+        //.anyRequest().authenticated();
 
         //添加认证过滤器
-        http.addFilter(new TokenLoginFilter(authenticationManager(),properties));
+        http.addFilter(new TokenLoginFilter(authenticationManager(), properties));
 
         //添加验证过滤器
-        http.addFilter(new TokenVerifyFilter(authenticationManager(),properties));
+        http.addFilter(new TokenVerifyFilter(authenticationManager(), properties));
 
         //添加自定义异常处理
         http.exceptionHandling().authenticationEntryPoint(new MyAuthenticationEntryPoint());
@@ -73,11 +77,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-
-    /**配置密码加密策略
+    /**
+     * 配置密码加密策略
+     *
+     * @param authenticationManagerBuilder
      * @author 赖柄沣 bingfengdev@aliyun.com
      * @date 2020-09-03 15:50:46
-     * @param authenticationManagerBuilder
      * @version 1.0
      */
     @Override
@@ -87,9 +92,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity webSecurity) throws Exception{
+    public void configure(WebSecurity webSecurity) throws Exception {
         //忽略静态资源
-        webSecurity.ignoring().antMatchers("/assents/**","/login.html");
+        webSecurity.ignoring().antMatchers("/assents/**", "/login.html");
     }
 
 }

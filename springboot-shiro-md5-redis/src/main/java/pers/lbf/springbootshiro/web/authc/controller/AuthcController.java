@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 
-/**认证模块
+/**
+ * 认证模块
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/10/6 10:07
@@ -29,21 +31,20 @@ public class AuthcController {
     public HashMap<Object, Object> login(@RequestBody LoginVO loginVO) throws AuthenticationException {
         boolean flags = authcService.login(loginVO);
         HashMap<Object, Object> map = new HashMap<>(3);
-        if (flags){
+        if (flags) {
             Serializable id = SecurityUtils.getSubject().getSession().getId();
-            map.put("msg","登录成功");
-            map.put("token",id);
+            map.put("msg", "登录成功");
+            map.put("token", id);
             return map;
-        }else {
+        } else {
             return null;
         }
     }
 
 
-
     @RequestMapping("/unauthc")
     public String unauthc() {
-       return "请先登录";
+        return "请先登录";
     }
 
 }

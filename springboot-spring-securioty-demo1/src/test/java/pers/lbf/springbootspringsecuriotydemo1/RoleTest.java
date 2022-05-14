@@ -21,8 +21,9 @@ public class RoleTest {
     private IRoleDao roleDao;
     @Autowired
     private IPermissonDao permissonDao;
+
     @Test
-    public void test1(){
+    public void test1() {
         List<RoleDO> roleList = roleDao.findByUserId(4);
         System.out.println(roleList);
         for (RoleDO roleDO : roleList) {

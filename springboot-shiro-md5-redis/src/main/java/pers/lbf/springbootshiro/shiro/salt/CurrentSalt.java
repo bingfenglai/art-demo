@@ -7,8 +7,10 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.Serializable;
 
-/**由于shiro当中的ByteSource没有实现序列化接口，缓存时会发生错误
+/**
+ * 由于shiro当中的ByteSource没有实现序列化接口，缓存时会发生错误
  * 因此，我们需要通过自定义ByteSource的方式实现这个接口
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/10/8 16:17

@@ -10,13 +10,16 @@ import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.subject.Subject;
 import pers.lbf.shiroauthcmysql.core.realm.MySqlRealm;
 
-/**认证管理器
+/**
+ * 认证管理器
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/10/4 11:11
  */
 public class CurrentSystemAuthenticator {
     private DefaultSecurityManager securityManager;
+
     public CurrentSystemAuthenticator() {
         //创建安全管理器
         securityManager = new DefaultSecurityManager();
@@ -29,7 +32,7 @@ public class CurrentSystemAuthenticator {
 
     }
 
-    public void authenticate(String username,String password) {
+    public void authenticate(String username, String password) {
         //获取当前登录主题
         Subject subject = SecurityUtils.getSubject();
 
@@ -39,20 +42,17 @@ public class CurrentSystemAuthenticator {
         //进行认证
         try {
             subject.login(token);
-        }catch (UnknownAccountException | IncorrectCredentialsException e) {
+        } catch (UnknownAccountException | IncorrectCredentialsException e) {
             System.out.println("用户名或密码不正确");
         }
 
 
         //打印认证状态
-        if (subject.isAuthenticated()){
-            System.out.println(token.getPrincipal()+" 认证通过！");
-        }else {
-            System.out.println(token.getPrincipal()+" 认证未通过！");
+        if (subject.isAuthenticated()) {
+            System.out.println(token.getPrincipal() + " 认证通过！");
+        } else {
+            System.out.println(token.getPrincipal() + " 认证未通过！");
         }
-
-
-
 
 
     }

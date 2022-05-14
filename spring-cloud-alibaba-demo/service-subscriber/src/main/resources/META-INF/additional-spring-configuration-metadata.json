@@ -5,4 +5,5 @@
       "type": "java.lang.String",
       "description": "Description for subscriber.service.nacos.service.url."
     }
-  ] }
+  ]
+}

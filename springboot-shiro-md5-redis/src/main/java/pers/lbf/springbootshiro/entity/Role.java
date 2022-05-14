@@ -11,48 +11,48 @@ import java.io.Serializable;
  */
 
 public class Role implements Serializable {
-  private static final long serialVersionUID = 534384732226656028L;
+    private static final long serialVersionUID = 534384732226656028L;
 
 
-  private Long roleId;
+    private Long roleId;
 
 
-  private String roleName;
+    private String roleName;
 
 
-  private String roleDesc;
+    private String roleDesc;
 
 
-  public Long getRoleId() {
-    return roleId;
-  }
+    public Long getRoleId() {
+        return roleId;
+    }
 
-  public void setRoleId(Long roleId) {
-    this.roleId = roleId;
-  }
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
 
-  public String getRoleName() {
-    return roleName;
-  }
+    public String getRoleName() {
+        return roleName;
+    }
 
-  public void setRoleName(String roleName) {
-    this.roleName = roleName;
-  }
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 
-  public String getRoleDesc() {
-    return roleDesc;
-  }
+    public String getRoleDesc() {
+        return roleDesc;
+    }
 
-  public void setRoleDesc(String roleDesc) {
-    this.roleDesc = roleDesc;
-  }
+    public void setRoleDesc(String roleDesc) {
+        this.roleDesc = roleDesc;
+    }
 
-  @Override
-  public String toString() {
-    return "Role{" +
-            "roleId=" + roleId +
-            ", roleName='" + roleName + '\'' +
-            ", roleDesc='" + roleDesc + '\'' +
-            '}';
-  }
+    @Override
+    public String toString() {
+        return "Role{" +
+                "roleId=" + roleId +
+                ", roleName='" + roleName + '\'' +
+                ", roleDesc='" + roleDesc + '\'' +
+                '}';
+    }
 }

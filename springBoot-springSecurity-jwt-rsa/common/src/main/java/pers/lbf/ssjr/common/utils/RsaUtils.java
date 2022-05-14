@@ -9,7 +9,9 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
-/**RSA非对称加密工具类
+/**
+ * RSA非对称加密工具类
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/9/2 22:27
@@ -18,12 +20,14 @@ public class RsaUtils {
 
     private static final int DEFAULT_KEY_SIZE = 2048;
 
-    /**从文件中读取公钥
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-09-04 13:10:15
+    /**
+     * 从文件中读取公钥
+     *
      * @param filename 公钥保存路径，相对于classpath
      * @return java.security.PublicKey 公钥对象
      * @throws Exception
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-04 13:10:15
      * @version 1.0
      */
     public static PublicKey getPublicKey(String filename) throws Exception {
@@ -33,12 +37,14 @@ public class RsaUtils {
     }
 
 
-    /**从文件中读取密钥
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-09-04 13:12:01
+    /**
+     * 从文件中读取密钥
+     *
      * @param filename 私钥保存路径，相对于classpath
      * @return java.security.PrivateKey 私钥对象
      * @throws Exception
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-04 13:12:01
      * @version 1.0
      */
     public static PrivateKey getPrivateKey(String filename) throws Exception {
@@ -48,11 +54,11 @@ public class RsaUtils {
     }
 
     /**
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-09-04 13:12:59
      * @param bytes 公钥的字节形式
      * @return java.security.PublicKey 公钥对象
      * @throws Exception
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-04 13:12:59
      * @version 1.0
      */
     private static PublicKey getPublicKey(byte[] bytes) throws Exception {
@@ -64,12 +70,14 @@ public class RsaUtils {
     }
 
 
-    /**获取密钥
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-09-04 13:14:02
+    /**
+     * 获取密钥
+     *
      * @param bytes 私钥的字节形式
      * @return java.security.PrivateKey
      * @throws Exception
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-04 13:14:02
      * @version 1.0
      */
     private static PrivateKey getPrivateKey(byte[] bytes) throws InvalidKeySpecException, NoSuchAlgorithmException {
@@ -82,11 +90,12 @@ public class RsaUtils {
 
     /**
      * 根据密文，生存rsa公钥和私钥,并写入指定文件
-     *@author 赖柄沣 bingfengdev@aliyun.com
-     *@date 2020-09-04 13:14:02
+     *
      * @param publicKeyFilename  公钥文件路径
      * @param privateKeyFilename 私钥文件路径
      * @param secret             生成密钥的密文
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-04 13:14:02
      */
     public static void generateKey(String publicKeyFilename, String privateKeyFilename, String secret, int keySize) throws Exception {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
@@ -103,12 +112,14 @@ public class RsaUtils {
         writeFile(privateKeyFilename, privateKeyBytes);
     }
 
-    /**读文件
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-09-04 13:15:37
+    /**
+     * 读文件
+     *
      * @param fileName
      * @return byte[]
      * @throws
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-04 13:15:37
      * @version 1.0
      */
     private static byte[] readFile(String fileName) throws Exception {
@@ -116,13 +127,15 @@ public class RsaUtils {
 
     }
 
-    /**写文件
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-09-04 13:16:01
+    /**
+     * 写文件
+     *
      * @param destPath
      * @param bytes
      * @return void
      * @throws
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-04 13:16:01
      * @version 1.0
      */
     private static void writeFile(String destPath, byte[] bytes) throws IOException {
@@ -134,12 +147,14 @@ public class RsaUtils {
 
     }
 
-    /**构造器私有化
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-09-04 13:16:29
+    /**
+     * 构造器私有化
+     *
      * @param
      * @return
      * @throws
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-04 13:16:29
      * @version 1.0
      */
     private RsaUtils() {

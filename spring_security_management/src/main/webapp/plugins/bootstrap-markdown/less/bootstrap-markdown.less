@@ -40,7 +40,7 @@
     font-family: @font-family-monospace;
     font-size: @font-size-base;
     outline: 0;
-    outline: thin dotted  \9; /* IE6-9 */
+    outline: thin dotted \9; /* IE6-9 */
     margin: 0;
     display: block;
     padding: 0;
@@ -51,6 +51,7 @@
     border-radius: 0;
     box-shadow: none;
     background: @input-bg-disabled;
+
     &:focus {
       box-shadow: none;
       background: @input-bg;
@@ -60,6 +61,7 @@
   // Hover state
   @color: @input-border-focus;
   @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+
   &.active {
     border-color: @color;
     outline: 0;
@@ -74,6 +76,7 @@
       right: 5px;
       color: #bebebe;
       padding: 3px 3px 3px 10px;
+
       &:hover {
         color: #333;
       }
@@ -156,6 +159,7 @@
       text-align: right;
       z-index: 1002;
       display: block;
+
       a {
         color: #b3b3b3;
         clear: right;

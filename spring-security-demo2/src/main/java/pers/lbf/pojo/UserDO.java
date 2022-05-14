@@ -18,12 +18,12 @@ import java.util.List;
  */
 @TableName("sys_user")
 public class UserDO implements UserDetails {
-   @TableId
+    @TableId
     private int id;
     private String username;
     private String password;
     private boolean status;
-    @TableField(exist=false)
+    @TableField(exist = false)
     private List roleList;
 
 

@@ -10,7 +10,9 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-/**用户凭证对象
+/**
+ * 用户凭证对象
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/9/3 16:20
@@ -28,7 +30,6 @@ public class UserAuthVO implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
-
 
 
     @JsonDeserialize(using = CustomAuthorityDeserializer.class)

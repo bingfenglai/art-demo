@@ -25,25 +25,25 @@ public class UserServiceImpl implements UserDetailsService {
     private UserDaoImpl userDaoImpl;
 
     /**
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-08-23 09:49:40
      * @param username username
      * @return UserDetails 这是spring security内部的用户对象
      * @throws UsernameNotFoundException usernameNotFound
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-08-23 09:49:40
      * @version 1.0
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         // 检验参数
-        if (username == null||username.trim().length() == 0) {
+        if (username == null || username.trim().length() == 0) {
             return null;
         }
 
         //
         QueryWrapper<UserDO> qw = Wrappers.query();
 
-        qw.eq("username",username);
+        qw.eq("username", username);
         UserDO user = userDaoImpl.selectOne(qw);
         System.out.println(user.toString());
 

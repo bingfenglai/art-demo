@@ -17,12 +17,12 @@ import pers.lbf.spring.cloud.alibaba.demo.service.pojo.dto.user.UserSimpleInfoDT
 @RequestMapping("/user")
 public class UserController {
 
-  @DubboReference(version = "1.0")
-  private IUserService userService;
+    @DubboReference(version = "1.0")
+    private IUserService userService;
 
-  @GetMapping("/getUserInfo")
-  public String getUserInfo() {
-    RpcResultDTO<UserSimpleInfoDTO> result = userService.getUserInfo();
-    return result.toString();
-  }
+    @GetMapping("/getUserInfo")
+    public String getUserInfo() {
+        RpcResultDTO<UserSimpleInfoDTO> result = userService.getUserInfo();
+        return result.toString();
+    }
 }

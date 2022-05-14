@@ -4,7 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-/**sentinel演示模块启动类
+/**
+ * sentinel演示模块启动类
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/10/26 10:10
@@ -13,7 +15,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 public class SentinelDemoApp {
 
-  public static void main(String[] args) {
-    SpringApplication.run(SentinelDemoApp.class,args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SentinelDemoApp.class, args);
+    }
 }

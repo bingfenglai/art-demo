@@ -24,20 +24,15 @@ public class TestController {
     private String port;
 
     @GetMapping("/getInfo")
-    public String doPay(){
-        return "来自服务提供者 "+port+" 的信息：后天刮台风";
+    public String doPay() {
+        return "来自服务提供者 " + port + " 的信息：后天刮台风";
     }
 
     @GetMapping("/getConfig")
-    public String getConfig(){
+    public String getConfig() {
 
         return configInfoDao.selectInfo().toString();
     }
-
-
-
-
-
 
 
 }

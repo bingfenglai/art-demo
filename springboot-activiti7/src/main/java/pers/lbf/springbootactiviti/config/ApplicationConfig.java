@@ -22,11 +22,11 @@ import java.util.stream.Collectors;
 public class ApplicationConfig {
 
     @Bean
-    public UserDetailsService getUserDetailsService(){
+    public UserDetailsService getUserDetailsService() {
 
         InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
 
-        String[][] usersGroupsAndRoles  = {
+        String[][] usersGroupsAndRoles = {
                 {"salaboy", "password", "ROLE_ACTIVITI_USER", "GROUP_activitiTeam"},
                 {"ryandawsonuk", "password", "ROLE_ACTIVITI_USER", "GROUP_activitiTeam"},
                 {"erdemedeiros", "password", "ROLE_ACTIVITI_USER", "GROUP_activitiTeam"},
@@ -36,12 +36,12 @@ public class ApplicationConfig {
         };
 
         for (String[] user : usersGroupsAndRoles) {
-            List<String> authoritiesStrings = Arrays.asList(Arrays.copyOfRange(user,2,user.length));
+            List<String> authoritiesStrings = Arrays.asList(Arrays.copyOfRange(user, 2, user.length));
 
             userDetailsManager.createUser(new User(
-                        user[0],
-                        passwordEncoder().encode(user[1]),
-                        authoritiesStrings.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList())
+                            user[0],
+                            passwordEncoder().encode(user[1]),
+                            authoritiesStrings.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList())
                     )
             );
 

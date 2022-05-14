@@ -13,12 +13,12 @@ import pers.lbf.spring.cloud.alibaba.demo.service.pojo.dto.user.UserSimpleInfoDT
 @DubboService(interfaceClass = IUserService.class, version = "1.0")
 public class UserServiceImpl implements IUserService {
 
-  @Override
-  public RpcResultDTO<UserSimpleInfoDTO> getUserInfo() {
+    @Override
+    public RpcResultDTO<UserSimpleInfoDTO> getUserInfo() {
 
-    UserSimpleInfoDTO userInfo = new UserSimpleInfoDTO();
-    userInfo.setGender("男");
-    userInfo.setUserName("向北");
-    return new RpcResultDTO<>(userInfo);
-  }
+        UserSimpleInfoDTO userInfo = new UserSimpleInfoDTO();
+        userInfo.setGender("男");
+        userInfo.setUserName("向北");
+        return new RpcResultDTO<>(userInfo);
+    }
 }

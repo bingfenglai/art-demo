@@ -32,7 +32,7 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public Future<String> sayHello(String name) {
-        logger.warn(String.format("Hello %s",name));
+        logger.warn(String.format("Hello %s", name));
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -43,7 +43,7 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public String sayHello2(String name) {
-        logger.warn(String.format("Hello %s",name));
+        logger.warn(String.format("Hello %s", name));
         return "ok";
     }
 

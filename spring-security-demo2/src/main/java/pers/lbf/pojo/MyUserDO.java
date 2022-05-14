@@ -31,7 +31,6 @@ public class MyUserDO {
     }
 
 
-
     public int getId() {
         return id;
     }

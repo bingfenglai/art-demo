@@ -33,17 +33,17 @@ public class ProductSecurityConfig extends WebSecurityConfigurerAdapter {
     private ProductRsaKeyProperties properties;
 
     @Bean
-    public BCryptPasswordEncoder getBCryptPas(){
+    public BCryptPasswordEncoder getBCryptPas() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception {
         //禁用跨域保护，取代它的是jwt
         http.csrf().disable();
 
         //添加验证过滤器
-        http.addFilter(new TokenVerifyFilter(authenticationManager(),properties));
+        http.addFilter(new TokenVerifyFilter(authenticationManager(), properties));
 
         //添加自定义异常处理401 403
         http.exceptionHandling().authenticationEntryPoint(new MyAuthenticationEntryPoint());
@@ -56,10 +56,12 @@ public class ProductSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    /**配置密码加密策略
+    /**
+     * 配置密码加密策略
+     *
+     * @param authenticationManagerBuilder
      * @author 赖柄沣 bingfengdev@aliyun.com
      * @date 2020-09-03 15:50:46
-     * @param authenticationManagerBuilder
      * @version 1.0
      */
     @Override
@@ -69,8 +71,8 @@ public class ProductSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity webSecurity) throws Exception{
+    public void configure(WebSecurity webSecurity) throws Exception {
         //忽略静态资源,这个和spring security的匿名访问配置是有区别的
-        webSecurity.ignoring().antMatchers("/assents/**","/login.html");
+        webSecurity.ignoring().antMatchers("/assents/**", "/login.html");
     }
 }

@@ -12,5 +12,5 @@ import pers.lbf.spring.cloud.alibaba.demo.service.pojo.dto.user.UserSimpleInfoDT
  */
 public interface IUserService {
 
-  RpcResultDTO<UserSimpleInfoDTO> getUserInfo();
+    RpcResultDTO<UserSimpleInfoDTO> getUserInfo();
 }

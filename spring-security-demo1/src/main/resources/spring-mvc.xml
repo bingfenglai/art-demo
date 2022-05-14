@@ -14,7 +14,7 @@
 
     <bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
         <!-- Default charset -->
-        <property name="charset" value="UTF-8" />
+        <property name="charset" value="UTF-8"/>
         <!-- SerializerFeature -->
         <property name="serializerFeatures">
             <list>
@@ -48,9 +48,7 @@
     </bean>
 
 
-
     <mvc:default-servlet-handler/>
-
 
 
 </beans>

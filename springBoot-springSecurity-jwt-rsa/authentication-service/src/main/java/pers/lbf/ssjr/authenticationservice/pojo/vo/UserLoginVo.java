@@ -2,7 +2,9 @@ package pers.lbf.ssjr.authenticationservice.pojo.vo;
 
 import java.io.Serializable;
 
-/**用户登录请求参数对象
+/**
+ * 用户登录请求参数对象
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/9/3 16:16

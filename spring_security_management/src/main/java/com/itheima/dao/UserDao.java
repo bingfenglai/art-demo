@@ -10,7 +10,7 @@ public interface UserDao {
     @Results({
             @Result(id = true, property = "id", column = "id"),
             @Result(property = "roles", column = "id", javaType = List.class,
-                many = @Many(select = "com.itheima.dao.RoleDao.findByUid"))
+                    many = @Many(select = "com.itheima.dao.RoleDao.findByUid"))
     })
     public SysUser findByName(String username);
 

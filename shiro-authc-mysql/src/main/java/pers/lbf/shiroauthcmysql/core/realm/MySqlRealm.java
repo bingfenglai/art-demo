@@ -8,19 +8,23 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-/**自定义Realm对象
+/**
+ * 自定义Realm对象
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/10/4 11:00
  */
 public class MySqlRealm extends AuthorizingRealm {
 
-    /**授权
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-10-04 11:01:50
+    /**
+     * 授权
+     *
      * @param principalCollection
      * @return org.apache.shiro.authz.AuthorizationInfo
      * @throws AuthenticationException
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-10-04 11:01:50
      * @version 1.0
      */
     @Override
@@ -29,12 +33,14 @@ public class MySqlRealm extends AuthorizingRealm {
         return null;
     }
 
-    /**认证
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-10-04 11:01:50
+    /**
+     * 认证
+     *
      * @param authenticationToken
      * @return org.apache.shiro.authz.AuthorizationInfo
      * @throws AuthenticationException
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-10-04 11:01:50
      * @version 1.0
      */
     @Override
@@ -44,7 +50,7 @@ public class MySqlRealm extends AuthorizingRealm {
 
         //2. 根据用户名查询数据库并封装成authenticationinfo对象返回(模拟)
         if (principal == "xiangbei") {
-            AuthenticationInfo authInfo = new SimpleAuthenticationInfo("xiangbei","123",this.getName());
+            AuthenticationInfo authInfo = new SimpleAuthenticationInfo("xiangbei", "123", this.getName());
             return authInfo;
         }
 

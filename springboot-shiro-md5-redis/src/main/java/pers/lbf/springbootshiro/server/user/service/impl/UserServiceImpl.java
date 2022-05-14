@@ -18,7 +18,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User findByUsername(String principal) {
-        if(principal == null|| "".equals(principal)){
+        if (principal == null || "".equals(principal)) {
             return null;
         }
 

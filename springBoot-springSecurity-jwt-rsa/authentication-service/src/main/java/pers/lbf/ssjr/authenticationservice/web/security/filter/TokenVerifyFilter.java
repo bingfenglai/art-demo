@@ -17,7 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**自定义身份验证器
+/**
+ * 自定义身份验证器
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/9/3 15:02
@@ -31,36 +33,38 @@ public class TokenVerifyFilter extends BasicAuthenticationFilter {
         this.prop = prop;
     }
 
-    /**过滤请求
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-09-03 15:07:27
+    /**
+     * 过滤请求
+     *
      * @param request
      * @param response
      * @param chain
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-03 15:07:27
      * @version 1.0
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response, FilterChain chain) throws ServletException, IOException, AuthenticationException,ExpiredJwtException {
+                                    HttpServletResponse response, FilterChain chain) throws ServletException, IOException, AuthenticationException, ExpiredJwtException {
 
-       //判断请求体的头中是否包含Authorization
-       String authorization = request.getHeader("Authorization");
-       //Authorization中是否包含Bearer，不包含直接返回
-       if (authorization==null||!authorization.startsWith("Bearer")){
-           chain.doFilter(request, response);
-           return;
-       }
+        //判断请求体的头中是否包含Authorization
+        String authorization = request.getHeader("Authorization");
+        //Authorization中是否包含Bearer，不包含直接返回
+        if (authorization == null || !authorization.startsWith("Bearer")) {
+            chain.doFilter(request, response);
+            return;
+        }
 
-       UsernamePasswordAuthenticationToken token;
-       try {
-           //解析jwt生成的token，获取权限
+        UsernamePasswordAuthenticationToken token;
+        try {
+            //解析jwt生成的token，获取权限
             token = getAuthentication(authorization);
 
-       }catch (ExpiredJwtException e){
-          // e.printStackTrace();
-           chain.doFilter(request, response);
-           return;
-       }
+        } catch (ExpiredJwtException e) {
+            // e.printStackTrace();
+            chain.doFilter(request, response);
+            return;
+        }
 
         //获取后，将Authentication写入SecurityContextHolder中供后序使用
         SecurityContextHolder.getContext().setAuthentication(token);
@@ -70,16 +74,17 @@ public class TokenVerifyFilter extends BasicAuthenticationFilter {
     }
 
 
-
-    /**对jwt生成的token进行解析
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-09-03 15:21:04
+    /**
+     * 对jwt生成的token进行解析
+     *
      * @param authorization auth
      * @return org.springframework.security.authentication.UsernamePasswordAuthenticationToken
      * @throws
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-03 15:21:04
      * @version 1.0
      */
-    public UsernamePasswordAuthenticationToken getAuthentication(String authorization) throws ExpiredJwtException{
+    public UsernamePasswordAuthenticationToken getAuthentication(String authorization) throws ExpiredJwtException {
 
         if (authorization == null) {
             return null;
@@ -87,19 +92,18 @@ public class TokenVerifyFilter extends BasicAuthenticationFilter {
 
         Payload<UserAuthVO> payload;
 
-            //从token中获取有效载荷
+        //从token中获取有效载荷
         payload = JwtUtils.getInfoFromToken(authorization.replace("Bearer", ""), prop.getPublicKey(), UserAuthVO.class);
-
 
 
         //获取当前访问对象
         UserAuthVO userInfo = payload.getUserInfo();
-        if (userInfo == null){
+        if (userInfo == null) {
             return null;
         }
 
         //将当前访问对象及其权限封装称spring security可识别的token
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userInfo,null,userInfo.getAuthorities());
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userInfo, null, userInfo.getAuthorities());
         return token;
     }
 }

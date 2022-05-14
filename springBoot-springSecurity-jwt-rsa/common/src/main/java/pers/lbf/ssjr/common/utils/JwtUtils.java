@@ -9,7 +9,9 @@ import java.security.PublicKey;
 import java.util.Base64;
 import java.util.UUID;
 
-/**token工具类
+/**
+ * token工具类
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/9/2 22:28

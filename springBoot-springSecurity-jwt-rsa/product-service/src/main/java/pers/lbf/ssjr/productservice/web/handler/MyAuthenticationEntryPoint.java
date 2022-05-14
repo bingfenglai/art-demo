@@ -26,7 +26,7 @@ public class MyAuthenticationEntryPoint implements AuthenticationEntryPoint {
         response.setStatus(200);
         Map<String, Object> map = new HashMap<>();
         map.put("code", HttpServletResponse.SC_UNAUTHORIZED);
-        map.put("msg","令牌已过期请重新登录");
+        map.put("msg", "令牌已过期请重新登录");
 
         ServletOutputStream out = response.getOutputStream();
         String s = new ObjectMapper().writeValueAsString(map);

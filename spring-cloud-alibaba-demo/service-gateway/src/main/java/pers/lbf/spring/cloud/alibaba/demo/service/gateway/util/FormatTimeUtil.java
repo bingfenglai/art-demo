@@ -11,15 +11,16 @@ import java.util.TimeZone;
  */
 public class FormatTimeUtil {
 
-  private FormatTimeUtil() {}
+    private FormatTimeUtil() {
+    }
 
-  public static void generateTime() {
-    TimeZone tz = TimeZone.getDefault();
-    System.out.println(tz.toString());
-  }
+    public static void generateTime() {
+        TimeZone tz = TimeZone.getDefault();
+        System.out.println(tz.toString());
+    }
 
-  public static void main(String[] args) {
-    System.out.println(System.nanoTime());
-    generateTime();
-  }
+    public static void main(String[] args) {
+        System.out.println(System.nanoTime());
+        generateTime();
+    }
 }

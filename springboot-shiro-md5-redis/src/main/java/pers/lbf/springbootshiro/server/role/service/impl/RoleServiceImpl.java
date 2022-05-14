@@ -18,9 +18,10 @@ public class RoleServiceImpl implements IRoleService {
 
     @Autowired
     private IRoleDao roleDao;
+
     @Override
     public List<Role> findByUsername(String username) {
-        if (username == null){
+        if (username == null) {
             return null;
         }
 

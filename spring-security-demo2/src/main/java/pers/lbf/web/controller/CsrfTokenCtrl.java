@@ -19,15 +19,15 @@ import java.util.HashMap;
 public class CsrfTokenCtrl {
 
     @GetMapping(value = "/getToken")
-    public HashMap<String, String> getToken(HttpServletRequest request ){
+    public HashMap<String, String> getToken(HttpServletRequest request) {
         /**
          * 在这里可以先过滤掉一些非法的请求，只允许内部静态网页服务器请求
          */
 
         CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
         HashMap<String, String> map = new HashMap<>();
-        map.put("csrf_header",token.getHeaderName());
-        map.put("csrf",token.getToken());
+        map.put("csrf_header", token.getHeaderName());
+        map.put("csrf", token.getToken());
         System.out.println(token.getToken());
         return map;
     }

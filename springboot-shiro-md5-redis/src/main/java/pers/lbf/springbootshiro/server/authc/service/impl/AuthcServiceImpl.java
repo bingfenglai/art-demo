@@ -17,22 +17,22 @@ import pers.lbf.springbootshiro.web.authc.pojo.vo.LoginVO;
 public class AuthcServiceImpl implements AuthcService {
     @Override
     public boolean login(LoginVO loginVO) throws AuthenticationException {
-        if (loginVO==null){
+        if (loginVO == null) {
             return false;
         }
 
-        if (loginVO.getUsername()==null||"".equals(loginVO.getUsername())){
+        if (loginVO.getUsername() == null || "".equals(loginVO.getUsername())) {
             return false;
         }
 
-        if (loginVO.getPassword() == null || "".equals(loginVO.getPassword())){
+        if (loginVO.getPassword() == null || "".equals(loginVO.getPassword())) {
             return false;
         }
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(loginVO.getUsername(), loginVO.getPassword());
 
 
-            subject.login(token);
+        subject.login(token);
 
 
         return true;

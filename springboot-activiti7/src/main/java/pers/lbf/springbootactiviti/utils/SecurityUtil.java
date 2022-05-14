@@ -15,8 +15,8 @@ import java.util.Collection;
 
 /**
  * @author 赖柄沣 bingfengdev@aliyun.com
- * @date 2020-08-18 11:27:31
  * @version 1.0
+ * @date 2020-08-18 11:27:31
  */
 @Component
 public class SecurityUtil {
@@ -24,7 +24,6 @@ public class SecurityUtil {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    
 
     public void logInAs(String username) {
 
@@ -52,8 +51,7 @@ public class SecurityUtil {
             }
 
             @Override
-            public Object getCredentials()
-            {
+            public Object getCredentials() {
                 return user.getPassword();
             }
 

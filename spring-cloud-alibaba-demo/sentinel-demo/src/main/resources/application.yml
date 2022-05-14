@@ -12,13 +12,13 @@ spring:
       transport:
         dashboard: 127.0.0.1:8080
       datasource:
-#        名字随便起
+        #        名字随便起
         ds1:
           nacos:
             server-addr: ${spring.cloud.nacos.server-addr}
             dataId: ${spring.application.name}-sentinel
             groupId: DEFAULT_GROUP
-#            规则类型，这里是限流规则
+            #            规则类型，这里是限流规则
             #取值见： org.springframework.cloud.alibaba.sentinel.datasource.RuleType
             rule-type: flow
         ds2:
@@ -26,7 +26,7 @@ spring:
             server-addr: ${spring.cloud.nacos.server-addr}
             dataId: ${spring.application.name}-sentinel-degrade
             groupId: DEFAULT_GROUP
-#            降级规则
+            #            降级规则
             rule-type: degrade
         ds3:
           nacos:

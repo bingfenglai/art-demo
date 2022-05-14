@@ -16,10 +16,11 @@ import reactor.core.publisher.Mono;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-/**WebFlux 的Netty是多路IO复用模型
+/**
+ * WebFlux 的Netty是多路IO复用模型
  * 对于服务器而言可以使用少数线程处理多个任务，
  * 但对于客户端来说，服务器的响应时间并不会得到提升，它还是会等待服务器执行完毕
- *
+ * <p>
  * 而对于Spring当中使用@EnableAsync 和 @Async注解声明的异步调用则会
  * 启动一个新的进程执行异步方法，而主线程继续往下执行，直到主线程当中需要从
  * Future中获取异步调用结果时，才会再次等待，直到获取到结果后才会往下执行，当然
@@ -48,14 +49,14 @@ public class DemoController {
     }
 
     @GetMapping("/infoList")
-    public Flux<ResultVO> getInfoList(){
+    public Flux<ResultVO> getInfoList() {
         ResultVO ok1 = ResultVO.ok();
         ResultVO ok2 = ResultVO.ok();
         ResultVO ok3 = ResultVO.ok();
         ResultVO ok4 = ResultVO.ok();
         ResultVO ok5 = ResultVO.ok();
         ResultVO ok6 = ResultVO.ok();
-        return Flux.just(ok1,ok2,ok6,ok5,ok3,ok4);
+        return Flux.just(ok1, ok2, ok6, ok5, ok3, ok4);
     }
 
 
@@ -67,7 +68,7 @@ public class DemoController {
         logger.info(info);
         logger.info(future.get());
         logger.info("主线程准备返回");
-    return Mono.just(new ResultVO("A0000", future.get()));
+        return Mono.just(new ResultVO("A0000", future.get()));
     }
 
 
@@ -84,7 +85,6 @@ public class DemoController {
         logger.info(stringFuture.get());
         logger.info(s);
     }
-
 
 
 }

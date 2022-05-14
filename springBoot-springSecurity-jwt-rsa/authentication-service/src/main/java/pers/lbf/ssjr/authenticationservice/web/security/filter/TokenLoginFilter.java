@@ -22,7 +22,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**自定义认证过滤器
+/**
+ * 自定义认证过滤器
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/9/3 12:11
@@ -37,11 +39,13 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthServerRsaKeyProperties prop;
 
-    /**构造注入
+    /**
+     * 构造注入
+     *
+     * @param authenticationManager spring security的认证管理器
+     * @param prop                  公钥 私钥 配置类
      * @author 赖柄沣 bingfengdev@aliyun.com
      * @date 2020-09-03 12:17:54
-     * @param authenticationManager spring security的认证管理器
-     * @param prop 公钥 私钥 配置类
      * @version 1.0
      */
     public TokenLoginFilter(AuthenticationManager authenticationManager, AuthServerRsaKeyProperties prop) {
@@ -51,16 +55,18 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
     }
 
 
-    /**接收并解析用户凭证，并返回json数据
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-09-03 12:19:29
-     * @param request req
+    /**
+     * 接收并解析用户凭证，并返回json数据
+     *
+     * @param request  req
      * @param response resp
      * @return Authentication
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-03 12:19:29
      * @version 1.0
      */
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response){
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
 
         //判断请求是否为POST,禁用GET请求提交数据
         if (!"POST".equals(request.getMethod())) {
@@ -73,7 +79,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
         try {
             UserLoginVo user = new ObjectMapper().readValue(request.getInputStream(), UserLoginVo.class);
 
-            if (user.getUsername()==null){
+            if (user.getUsername() == null) {
                 user.setUsername("");
             }
 
@@ -86,12 +92,10 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
                     new UsernamePasswordAuthenticationToken(
                             user.getUsername(),
                             user.getPassword()));
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
 
-        }
-        catch (BadCredentialsException e) {
+        } catch (BadCredentialsException e) {
             //用户名或密码错误返回json数据提示，实际项目中这里可能是重定向到
             try {
                 //生成消息
@@ -111,18 +115,19 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
             throw new RuntimeException(e);
         }
         throw new RuntimeException("未知错误");
-        }
+    }
 
 
-
-    /**这个方法会在验证成功时被调用
-     *用户登录成功后，生成token,并且返回json数据给前端
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-09-03 13:00:23
+    /**
+     * 这个方法会在验证成功时被调用
+     * 用户登录成功后，生成token,并且返回json数据给前端
+     *
      * @param request
      * @param response
      * @param chain
      * @param authResult
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-09-03 13:00:23
      * @version 1.0
      */
     @Override
@@ -134,17 +139,17 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
         user.setAuthorities((List<SimpleGrantedAuthority>) authResult.getAuthorities());
 
         //使用jwt创建一个token，私钥加密
-        String token = JwtUtils.generateTokenExpireInMinutes(user,prop.getPrivateKey(),15);
+        String token = JwtUtils.generateTokenExpireInMinutes(user, prop.getPrivateKey(), 15);
 
         //返回token
-       response.addHeader("Authorization","Bearer"+token);
+        response.addHeader("Authorization", "Bearer" + token);
 
-       //登录成功返回json数据提示，实际项目中这里可能是重定向到
+        //登录成功返回json数据提示，实际项目中这里可能是重定向到
         try {
             //生成消息
             Map<String, Object> map = new HashMap<>();
-            map.put("code",HttpServletResponse.SC_OK);
-            map.put("msg","登录成功");
+            map.put("code", HttpServletResponse.SC_OK);
+            map.put("msg", "登录成功");
             //响应数据
             response.setContentType("application/json;charset=utf-8");
             response.setStatus(HttpServletResponse.SC_OK);
@@ -152,7 +157,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
             writer.write(new ObjectMapper().writeValueAsString(map));
             writer.flush();
             writer.close();
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

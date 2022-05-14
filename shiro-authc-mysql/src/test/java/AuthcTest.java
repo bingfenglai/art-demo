@@ -9,13 +9,14 @@ import pers.lbf.shiroauthcmysql.core.authc.CurrentSystemAuthenticator;
  */
 public class AuthcTest {
     private CurrentSystemAuthenticator authenticator;
+
     @Before
     public void init() {
         this.authenticator = new CurrentSystemAuthenticator();
     }
 
     @Test
-    public void testAuthc(){
-        this.authenticator.authenticate("xiangbei","13");
+    public void testAuthc() {
+        this.authenticator.authenticate("xiangbei", "13");
     }
 }

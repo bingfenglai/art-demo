@@ -10,51 +10,51 @@ import java.util.Objects;
  */
 public class UserSimpleInfoDTO implements Serializable {
 
-  private String userName;
-  private String gender;
+    private String userName;
+    private String gender;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        UserSimpleInfoDTO that = (UserSimpleInfoDTO) o;
+        return Objects.equals(userName, that.userName) && Objects.equals(gender, that.gender);
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userName, gender);
     }
-    UserSimpleInfoDTO that = (UserSimpleInfoDTO) o;
-    return Objects.equals(userName, that.userName) && Objects.equals(gender, that.gender);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(userName, gender);
-  }
+    @Override
+    public String toString() {
+        return "UserSimpleInfoDTO{"
+                + "userName='"
+                + userName
+                + '\''
+                + ", gender='"
+                + gender
+                + '\''
+                + '}';
+    }
 
-  @Override
-  public String toString() {
-    return "UserSimpleInfoDTO{"
-        + "userName='"
-        + userName
-        + '\''
-        + ", gender='"
-        + gender
-        + '\''
-        + '}';
-  }
+    public String getUserName() {
+        return userName;
+    }
 
-  public String getUserName() {
-    return userName;
-  }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
+    public String getGender() {
+        return gender;
+    }
 
-  public String getGender() {
-    return gender;
-  }
-
-  public void setGender(String gender) {
-    this.gender = gender;
-  }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }

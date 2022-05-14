@@ -15,11 +15,11 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/333")
 public class TestController {
 
-  @Value("${test}")
-  private String test;
+    @Value("${test}")
+    private String test;
 
-  @GetMapping("/")
-  public Mono<String> getTest() {
-    return Mono.just(test);
-  }
+    @GetMapping("/")
+    public Mono<String> getTest() {
+        return Mono.just(test);
+    }
 }

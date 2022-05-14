@@ -21,7 +21,7 @@ public class SpringbootSpringSecurityDemo1Application {
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

@@ -15,19 +15,20 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication(scanBasePackages = "pers.lbf.spring.cloud.alibaba.demo.service.subscriber")
 @EnableDiscoveryClient
 public class SubscriberApp {
-  public static void main(String[] args) {
-    SpringApplication.run(SubscriberApp.class,args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SubscriberApp.class, args);
+    }
 
     /**
      * 通过restTemplate进行服务调用
      * 通过@LoadBalanced注解开启负载均衡和主机地址端口映射
-   * @return restTemplate
-   */
-  @LoadBalanced
-  @Bean
-  public RestTemplate restTemplate(){
-    return new RestTemplate();
-  }
+     *
+     * @return restTemplate
+     */
+    @LoadBalanced
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
 }

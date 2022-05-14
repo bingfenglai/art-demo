@@ -15,9 +15,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableDubbo(scanBasePackages = "pers.lbf.spring.cloud.alibaba.demo.service.dubbo.user.service")
 public class UserServiceApp {
 
-  public static void main(String[] args) {
-    SpringApplication.run(UserServiceApp.class, args);
-    Logger logger = LoggerFactory.getLogger(UserServiceApp.class);
-    logger.info("用户服务启动成功");
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(UserServiceApp.class, args);
+        Logger logger = LoggerFactory.getLogger(UserServiceApp.class);
+        logger.info("用户服务启动成功");
+    }
 }

@@ -49,13 +49,15 @@ public class Activiti7SpringbootTest {
         securityUtil.logInAs("system");
     }
 
-    /**部署流程
+    /**
+     * 部署流程
+     *
      * @author 赖柄沣 bingfengdev@aliyun.com
      * @date 2020-08-18 12:53:51
      * @version 1.0
      */
     @Test
-    public void repositoryProcess(){
+    public void repositoryProcess() {
         RepositoryService repositoryService = processEngine.getRepositoryService();
         Deployment deployment = repositoryService.createDeployment()
                 .addClasspathResource("holiday.bpmn")
@@ -65,13 +67,15 @@ public class Activiti7SpringbootTest {
         System.out.println(deployment.getDeploymentTime());
     }
 
-    /**分页查询系统中所有可用的流程定义
+    /**
+     * 分页查询系统中所有可用的流程定义
+     *
      * @author 赖柄沣 bingfengdev@aliyun.com
      * @date 2020-08-18 13:32:36
      * @version 1.0
      */
     @Test
-    public void findProcessList(){
+    public void findProcessList() {
         Page<ProcessDefinition> processDefinitionPage = processRuntime
                 .processDefinitions(Pageable.of(0, 10));
         List<ProcessDefinition> content = processDefinitionPage.getContent();
@@ -80,13 +84,15 @@ public class Activiti7SpringbootTest {
         }
     }
 
-    /**启动流程
+    /**
+     * 启动流程
+     *
      * @author 赖柄沣 bingfengdev@aliyun.com
      * @date 2020-08-18 13:21:12
      * @version 1.0
      */
     @Test
-    public void startProcess(){
+    public void startProcess() {
 
         StartProcessPayload myProcess = ProcessPayloadBuilder
                 .start()
@@ -95,11 +101,13 @@ public class Activiti7SpringbootTest {
 
         myProcess.setProcessInstanceName("张三请假");
         processRuntime.start(myProcess);
-        System.out.println("流程实例"+myProcess.getId());
+        System.out.println("流程实例" + myProcess.getId());
 
     }
 
-    /**查询并完成任务
+    /**
+     * 查询并完成任务
+     *
      * @author 赖柄沣 bingfengdev@aliyun.com
      * @date 2020-08-18 13:41:40
      * @version 1.0
@@ -108,7 +116,7 @@ public class Activiti7SpringbootTest {
     public void findAndFinishTask() {
         Page<Task> taskPage = taskRuntime.tasks(Pageable.of(0, 10));
 
-        if (taskPage.getTotalItems()>0){
+        if (taskPage.getTotalItems() > 0) {
 
             List<Task> content = taskPage.getContent();
             for (Task task : content) {

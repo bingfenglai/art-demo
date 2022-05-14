@@ -1,16 +1,16 @@
 import axios from 'axios';
 
 let server = axios.create({
-    baseURL:"http://127.0.0.1:8081/",
-    timeout:3000,
-    withCredentials:false
+    baseURL: "http://127.0.0.1:8081/",
+    timeout: 3000,
+    withCredentials: false
 });
 
 //添加一个拦截请求器
 server.interceptors.request.use(function (config) {
     config.headers['Content-Type'] = 'application,text/plain';
     return config;
-},function (error) {
+}, function (error) {
     //Do something with request error
     return error;
 });

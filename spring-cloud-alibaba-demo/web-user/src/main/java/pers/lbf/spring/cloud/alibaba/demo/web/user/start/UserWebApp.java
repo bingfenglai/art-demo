@@ -12,7 +12,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication(scanBasePackages = "pers.lbf.spring.cloud.alibaba.demo.web.user.controller")
 @EnableDiscoveryClient
 public class UserWebApp {
-  public static void main(String[] args) {
-    SpringApplication.run(UserWebApp.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(UserWebApp.class, args);
+    }
 }

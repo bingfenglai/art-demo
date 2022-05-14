@@ -6,14 +6,16 @@ import org.apache.shiro.session.mgt.eis.SessionIdGenerator;
 
 import java.io.Serializable;
 
-/**SessionId生成器
+/**
+ * SessionId生成器
  * <p>@author 赖柄沣 laibingf_dev@outlook.com</p>
  * <p>@date 2020/8/15 15:19</p>
  */
 public class ShiroSessionIdGenerator implements SessionIdGenerator {
 
     /**
-     *实现SessionId生成
+     * 实现SessionId生成
+     *
      * @param session
      * @return
      */

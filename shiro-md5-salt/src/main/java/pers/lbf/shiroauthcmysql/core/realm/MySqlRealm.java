@@ -11,7 +11,9 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
-/**自定义Realm对象
+/**
+ * 自定义Realm对象
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/10/4 11:00
@@ -28,15 +30,17 @@ public class MySqlRealm extends AuthorizingRealm {
         this.setCredentialsMatcher(myCredentialsMatcher);
     }
 
-    /**授权方法
+    /**
+     * 授权方法
      * 对于授权方法，每次判断主体是否具备对应权限时都会调用
      * 因此，这里应当做缓存
      * 缓存会在后面与springboot整合时讲
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-10-04 11:01:50
+     *
      * @param principalCollection
      * @return org.apache.shiro.authz.AuthorizationInfo
      * @throws AuthenticationException
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-10-04 11:01:50
      * @version 1.0
      */
     @Override
@@ -46,7 +50,7 @@ public class MySqlRealm extends AuthorizingRealm {
         String primaryPrincipal = (String) principalCollection.getPrimaryPrincipal();
         //2. 根据主身份信息查询数据库，获取主体具备的权限（模拟）
         SimpleAuthorizationInfo authenticationInfo = null;
-        if ("xiangbei".equals(primaryPrincipal)){
+        if ("xiangbei".equals(primaryPrincipal)) {
             authenticationInfo = new SimpleAuthorizationInfo();
             //authenticationInfo.addRole("admin");
 
@@ -59,12 +63,14 @@ public class MySqlRealm extends AuthorizingRealm {
         return authenticationInfo;
     }
 
-    /**认证
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-10-04 11:01:50
+    /**
+     * 认证
+     *
      * @param authenticationToken
      * @return org.apache.shiro.authz.AuthorizationInfo
      * @throws AuthenticationException
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-10-04 11:01:50
      * @version 1.0
      */
     @Override

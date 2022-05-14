@@ -18,7 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled  = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -58,11 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity webSecurity) throws Exception{
+    public void configure(WebSecurity webSecurity) throws Exception {
         //忽略静态资源
-        webSecurity.ignoring().antMatchers("/assents/**","/login.html");
+        webSecurity.ignoring().antMatchers("/assents/**", "/login.html");
     }
-
 
 
 }

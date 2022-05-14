@@ -22,7 +22,9 @@ import pers.lbf.springbootshiro.utils.ShiroUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-/**自定义Realm，使用mysql数据源
+/**
+ * 自定义Realm，使用mysql数据源
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/10/6 9:09
@@ -38,19 +40,20 @@ public class MySQLRealm extends AuthorizingRealm {
 
     /**
      * 授权
+     *
      * @param principals
      * @return
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-       User user = (User) principals.getPrimaryPrincipal();
+        User user = (User) principals.getPrimaryPrincipal();
         String username = user.getUsername();
         List<Role> roleList = roleService.findByUsername(username);
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         for (Role role : roleList) {
             authorizationInfo.addRole(role.getRoleName());
         }
-        List<Long> roleIdList  = new ArrayList<>();
+        List<Long> roleIdList = new ArrayList<>();
         for (Role role : roleList) {
             roleIdList.add(role.getRoleId());
         }
@@ -65,6 +68,7 @@ public class MySQLRealm extends AuthorizingRealm {
 
     /**
      * 认证
+     *
      * @param token
      * @return
      * @throws AuthenticationException
@@ -72,7 +76,7 @@ public class MySQLRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 
-        if(token==null){
+        if (token == null) {
             return null;
         }
         String principal = (String) token.getPrincipal();
@@ -88,7 +92,7 @@ public class MySQLRealm extends AuthorizingRealm {
                 getName());
 
         //清除当前主体旧的会话，相当于你在新电脑上登录系统，把你之前在旧电脑上登录的会话挤下去
-        ShiroUtils.deleteCache(user.getUsername(),true);
+        ShiroUtils.deleteCache(user.getUsername(), true);
         return simpleAuthenticationInfo;
     }
 }

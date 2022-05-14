@@ -11,18 +11,18 @@ import java.util.List;
  * @version 1.0
  * @date 2020/10/6 15:28
  */
-public interface IResourceDao  {
+public interface IResourceDao {
 
-    @Select("<script>"+
-            "select resource_id from role_resource where role_id in"+
-            "<foreach item='item' index='index' collection='roleIdList' open='(' separator=',' close=')'> "+
-            "#{item}"+
-            "</foreach>"+
+    @Select("<script>" +
+            "select resource_id from role_resource where role_id in" +
+            "<foreach item='item' index='index' collection='roleIdList' open='(' separator=',' close=')'> " +
+            "#{item}" +
+            "</foreach>" +
             "</script>")
-    List<Long> findResourceIdsByRoleIds( @Param("roleIdList") List<Long> roleIdList);
+    List<Long> findResourceIdsByRoleIds(@Param("roleIdList") List<Long> roleIdList);
 
     @Select({"<script>",
-            "select * from resource where resource_id in " ,
+            "select * from resource where resource_id in ",
             "<foreach item='item' index='index' collection='resourceIds' open='(' separator=',' close=')'> ",
             "#{item}",
             "</foreach>",

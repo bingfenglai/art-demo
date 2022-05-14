@@ -18,34 +18,34 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/findAll")
-    public String findAll(Model model){
+    public String findAll(Model model) {
         List<SysUser> list = userService.findAll();
         model.addAttribute("list", list);
         return "user-list";
     }
 
     @RequestMapping("/save")
-    public String save(SysUser user){
+    public String save(SysUser user) {
         userService.save(user);
         return "redirect:findAll";
     }
 
     @RequestMapping("/toAddRolePage")
-    public String toAddRolePage(Model model, Integer id, boolean success){
+    public String toAddRolePage(Model model, Integer id, boolean success) {
         Map<String, Object> map = userService.toAddRolePage(id);
         model.addAttribute("uid", id);
         model.addAttribute("allRoles", map.get("allRoles"));
         model.addAttribute("myRoles", map.get("myRoles"));
-        if(success){
+        if (success) {
             model.addAttribute("success", "修改成功");
         }
         return "user-role-add";
     }
 
     @RequestMapping("/addRoleToUser")
-    public String addRoleToUser(Integer[] ids, Integer userId){
+    public String addRoleToUser(Integer[] ids, Integer userId) {
         userService.addRoleToUser(userId, ids);
-        return "redirect:toAddRolePage?success="+true+"&id="+userId;
+        return "redirect:toAddRolePage?success=" + true + "&id=" + userId;
     }
 
 

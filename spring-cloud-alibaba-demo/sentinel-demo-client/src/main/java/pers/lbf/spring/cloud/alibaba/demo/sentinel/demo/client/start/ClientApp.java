@@ -17,16 +17,16 @@ import pers.lbf.spring.cloud.alibaba.demo.sentinel.demo.client.utils.SentinelUti
 @EnableDiscoveryClient
 public class ClientApp {
 
-  public static void main(String[] args) {
-    SpringApplication.run(ClientApp.class,args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(ClientApp.class, args);
+    }
 
-  @Bean
-  @SentinelRestTemplate(fallbackClass = SentinelUtils.class,
-          fallback = "defaultFallbackMethod",
-          blockHandlerClass = SentinelUtils.class,
-          blockHandler = "handleException")
-  public RestTemplate restTemplate() {
-      return new RestTemplate();
-  }
+    @Bean
+    @SentinelRestTemplate(fallbackClass = SentinelUtils.class,
+            fallback = "defaultFallbackMethod",
+            blockHandlerClass = SentinelUtils.class,
+            blockHandler = "handleException")
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 }

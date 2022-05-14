@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 public class SimpleFluxTest {
 
     @Test
-    public void test1(){
+    public void test1() {
         Flux.create(sink -> {
 
             for (int i = 0; i < 100000000; i++) {

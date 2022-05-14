@@ -5,7 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-/** Spring上下文工具类
+/**
+ * Spring上下文工具类
  * <p>@author 赖柄沣 laibingf_dev@outlook.com</p>
  * <p>@date 2020/8/15 15:03</p>
  */
@@ -16,7 +17,7 @@ public class SpringContextUtil implements ApplicationContextAware {
 
     /**
      * Spring在bean初始化后会判断是不是ApplicationContextAware的子类
-     *如果该类是,setApplicationContext()方法,会将容器中ApplicationContext作为参数传入进去
+     * 如果该类是,setApplicationContext()方法,会将容器中ApplicationContext作为参数传入进去
      */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -25,6 +26,7 @@ public class SpringContextUtil implements ApplicationContextAware {
 
     /**
      * 通过Name返回指定的Bean
+     *
      * @param beanClass
      * @param <T>
      * @return bean

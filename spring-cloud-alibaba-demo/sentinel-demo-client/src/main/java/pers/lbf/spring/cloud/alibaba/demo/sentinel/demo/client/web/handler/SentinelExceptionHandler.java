@@ -15,6 +15,7 @@ public class SentinelExceptionHandler {
 
     /**
      * 限流异常处理
+     *
      * @return
      */
     @ExceptionHandler(value = HttpClientErrorException.TooManyRequests.class)
@@ -25,6 +26,7 @@ public class SentinelExceptionHandler {
 
     /**
      * 降级异常处理
+     *
      * @return
      */
     @ExceptionHandler(value = DegradeException.class)

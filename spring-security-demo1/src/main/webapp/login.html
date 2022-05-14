@@ -2,42 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<!--    <meta name="_csrf" content="${_csrf.token}"/>-->
+    <!--    <meta name="_csrf" content="${_csrf.token}"/>-->
     <title>登录</title>
 </head>
 <!-- 引入样式 -->
 <link rel="stylesheet" href="https://unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css">
 <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    .form {position: relative;}
-    .son {position: relative; top:50%;margin-top:-50px;left:50%;margin-left:-50px}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .form {
+        position: relative;
+    }
+
+    .son {
+        position: relative;
+        top: 50%;
+        margin-top: -50px;
+        left: 50%;
+        margin-left: -50px
+    }
 </style>
 <body>
 <div id="app">
-<el-container>
-    <el-header></el-header>
-    <el-main style="margin-top: 10%">
+    <el-container>
+        <el-header></el-header>
+        <el-main style="margin-top: 10%">
 
-        <div id="form" style="width: 310px;height:280px;margin: auto;background-color: #71d3bd">
+            <div id="form" style="width: 310px;height:280px;margin: auto;background-color: #71d3bd">
 
 
-            <el-form id="son" ref="form" :model="user"  style="margin: auto;padding-left: 10px;padding-right: 10px" >
-                <el-form-item>
-                    <h3 style="text-align: center">欢迎登录</h3>
-                </el-form-item>
-                <el-form-item  style="width: auto;">
-                    <el-input v-model="user.username" placeholder="username"></el-input>
-                </el-form-item>
-                <el-form-item  style="width: auto;">
-                    <el-input v-model="user.password" placeholder="password"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-button type="primary" @click="onSubmit" style="width:100%;">登录</el-button>
-                </el-form-item>
-            </el-form>
-        </div>
-    </el-main>
-</el-container>
+                <el-form id="son" ref="form" :model="user" style="margin: auto;padding-left: 10px;padding-right: 10px">
+                    <el-form-item>
+                        <h3 style="text-align: center">欢迎登录</h3>
+                    </el-form-item>
+                    <el-form-item style="width: auto;">
+                        <el-input v-model="user.username" placeholder="username"></el-input>
+                    </el-form-item>
+                    <el-form-item style="width: auto;">
+                        <el-input v-model="user.password" placeholder="password"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="onSubmit" style="width:100%;">登录</el-button>
+                    </el-form-item>
+                </el-form>
+            </div>
+        </el-main>
+    </el-container>
 </div>
 
 
@@ -52,36 +66,38 @@
 
     new Vue({
         el: "#app",
-        data: function (){
+        data: function () {
             return {
-                user:{
-                    username:null,
-                    password:null,
-                    _csrf:null,
-                    _csrf_header:null
+                user: {
+                    username: null,
+                    password: null,
+                    _csrf: null,
+                    _csrf_header: null
 
                 }
             }
         },
-        methods:{
+        methods: {
             onSubmit: function () {
                 axios.get("/csrf/getToken").then(r => {
                     alert(JSON.stringify(r.csrf));
                     this.user._csrf = r.data.csrf;
                     this.user._csrf_header = r.data.csrf_header;
 
-                    axios.post("/login",{
-                        username: this.user.username,
-                        password: this.user.password,
+                    axios.post("/login", {
+                            username: this.user.username,
+                            password: this.user.password,
 
                         },
-                        {headers: {
+                        {
+                            headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
                                 '_csrf': this.user._csrf,
                                 '_csrf_header': this.user._csrf_header
 
-                            }}
-                       ).then(r=>{
+                            }
+                        }
+                    ).then(r => {
 
                     })
 

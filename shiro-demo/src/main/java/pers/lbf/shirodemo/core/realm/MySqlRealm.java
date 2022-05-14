@@ -14,12 +14,14 @@ import org.apache.shiro.subject.PrincipalCollection;
  */
 public class MySqlRealm extends AuthorizingRealm {
 
-    /**授权
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-10-04 11:01:50
+    /**
+     * 授权
+     *
      * @param principalCollection
      * @return org.apache.shiro.authz.AuthorizationInfo
      * @throws AuthenticationException
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-10-04 11:01:50
      * @version 1.0
      */
     @Override
@@ -28,12 +30,14 @@ public class MySqlRealm extends AuthorizingRealm {
         return null;
     }
 
-    /**认证
-     * @author 赖柄沣 bingfengdev@aliyun.com
-     * @date 2020-10-04 11:01:50
+    /**
+     * 认证
+     *
      * @param authenticationToken
      * @return org.apache.shiro.authz.AuthorizationInfo
      * @throws AuthenticationException
+     * @author 赖柄沣 bingfengdev@aliyun.com
+     * @date 2020-10-04 11:01:50
      * @version 1.0
      */
     @Override

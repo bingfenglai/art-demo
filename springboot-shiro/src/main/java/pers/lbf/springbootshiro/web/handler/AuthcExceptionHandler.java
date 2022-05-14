@@ -16,11 +16,12 @@ public class AuthcExceptionHandler {
 
     @ExceptionHandler(AuthenticationException.class)
     public String authcHandler(AuthenticationException e) {
-    System.out.println("走这了");
+        System.out.println("走这了");
         return e.getLocalizedMessage();
     }
+
     @ExceptionHandler(AuthorizationException.class)
-    public String authzHandler(AuthorizationException e){
+    public String authzHandler(AuthorizationException e) {
         return e.getLocalizedMessage();
     }
 }

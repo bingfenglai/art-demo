@@ -19,13 +19,13 @@ public class TestController {
     @Autowired
     private RestTemplate rest;
 
-  @Value("${service-publisher.service-url}")
-  private String serviceURL;
+    @Value("${service-publisher.service-url}")
+    private String serviceURL;
 
     @GetMapping("/getInfo")
-    public String getInfo(){
+    public String getInfo() {
 
-        return rest.getForObject(serviceURL+"/test/getInfo",String.class);
+        return rest.getForObject(serviceURL + "/test/getInfo", String.class);
     }
 
 }

@@ -13,12 +13,12 @@ public class ResultVO<T> implements Serializable {
     private T data;
 
 
-    public ResultVO(String code, String msg){
+    public ResultVO(String code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public ResultVO(T data){
+    public ResultVO(T data) {
         this.data = data;
         this.msg = "操作成功";
         this.code = "0";

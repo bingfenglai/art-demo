@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.08 (64 bit)
 MySQL - 8.0.16 : Database - security_authority
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -15,12 +16,13 @@ MySQL - 8.0.16 : Database - security_authority
 
 DROP TABLE IF EXISTS `sys_permission`;
 
-CREATE TABLE `sys_permission` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `permission_NAME` varchar(30) DEFAULT NULL COMMENT '菜单名称',
-  `permission_url` varchar(100) DEFAULT NULL COMMENT '菜单地址',
-  `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT '父菜单id',
-  PRIMARY KEY (`ID`)
+CREATE TABLE `sys_permission`
+(
+    `ID`              int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+    `permission_NAME` varchar(30)  DEFAULT NULL COMMENT '菜单名称',
+    `permission_url`  varchar(100) DEFAULT NULL COMMENT '菜单地址',
+    `parent_id`       int(11) NOT NULL DEFAULT '0' COMMENT '父菜单id',
+    PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_permission` */
@@ -29,11 +31,12 @@ CREATE TABLE `sys_permission` (
 
 DROP TABLE IF EXISTS `sys_role`;
 
-CREATE TABLE `sys_role` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `ROLE_NAME` varchar(30) DEFAULT NULL COMMENT '角色名称',
-  `ROLE_DESC` varchar(60) DEFAULT NULL COMMENT '角色描述',
-  PRIMARY KEY (`ID`)
+CREATE TABLE `sys_role`
+(
+    `ID`        int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+    `ROLE_NAME` varchar(30) DEFAULT NULL COMMENT '角色名称',
+    `ROLE_DESC` varchar(60) DEFAULT NULL COMMENT '角色描述',
+    PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_role` */
@@ -42,13 +45,14 @@ CREATE TABLE `sys_role` (
 
 DROP TABLE IF EXISTS `sys_role_permission`;
 
-CREATE TABLE `sys_role_permission` (
-  `RID` int(11) NOT NULL COMMENT '角色编号',
-  `PID` int(11) NOT NULL COMMENT '权限编号',
-  PRIMARY KEY (`RID`,`PID`),
-  KEY `FK_Reference_12` (`PID`),
-  CONSTRAINT `FK_Reference_11` FOREIGN KEY (`RID`) REFERENCES `sys_role` (`ID`),
-  CONSTRAINT `FK_Reference_12` FOREIGN KEY (`PID`) REFERENCES `sys_permission` (`ID`)
+CREATE TABLE `sys_role_permission`
+(
+    `RID` int(11) NOT NULL COMMENT '角色编号',
+    `PID` int(11) NOT NULL COMMENT '权限编号',
+    PRIMARY KEY (`RID`, `PID`),
+    KEY   `FK_Reference_12` (`PID`),
+    CONSTRAINT `FK_Reference_11` FOREIGN KEY (`RID`) REFERENCES `sys_role` (`ID`),
+    CONSTRAINT `FK_Reference_12` FOREIGN KEY (`PID`) REFERENCES `sys_permission` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_role_permission` */
@@ -57,12 +61,13 @@ CREATE TABLE `sys_role_permission` (
 
 DROP TABLE IF EXISTS `sys_user`;
 
-CREATE TABLE `sys_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(32) NOT NULL COMMENT '用户名称',
-  `password` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
-  `status` int(1) DEFAULT '1' COMMENT '1开启0关闭',
-  PRIMARY KEY (`id`)
+CREATE TABLE `sys_user`
+(
+    `id`       int(11) NOT NULL AUTO_INCREMENT,
+    `username` varchar(32)                                             NOT NULL COMMENT '用户名称',
+    `password` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
+    `status`   int(1) DEFAULT '1' COMMENT '1开启0关闭',
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_user` */
@@ -71,13 +76,14 @@ CREATE TABLE `sys_user` (
 
 DROP TABLE IF EXISTS `sys_user_role`;
 
-CREATE TABLE `sys_user_role` (
-  `UID` int(11) NOT NULL COMMENT '用户编号',
-  `RID` int(11) NOT NULL COMMENT '角色编号',
-  PRIMARY KEY (`UID`,`RID`),
-  KEY `FK_Reference_10` (`RID`),
-  CONSTRAINT `FK_Reference_10` FOREIGN KEY (`RID`) REFERENCES `sys_role` (`ID`),
-  CONSTRAINT `FK_Reference_9` FOREIGN KEY (`UID`) REFERENCES `sys_user` (`id`)
+CREATE TABLE `sys_user_role`
+(
+    `UID` int(11) NOT NULL COMMENT '用户编号',
+    `RID` int(11) NOT NULL COMMENT '角色编号',
+    PRIMARY KEY (`UID`, `RID`),
+    KEY   `FK_Reference_10` (`RID`),
+    CONSTRAINT `FK_Reference_10` FOREIGN KEY (`RID`) REFERENCES `sys_role` (`ID`),
+    CONSTRAINT `FK_Reference_9` FOREIGN KEY (`UID`) REFERENCES `sys_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_user_role` */

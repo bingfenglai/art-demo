@@ -17,7 +17,7 @@ public interface IRoleDao {
     List<Long> findByUsername(String username);
 
     @Select("select * from role where role_id in (1)")
-    List<Role> findByRoleIds( @Param("roleIdList") List<Long> roleIdList);
+    List<Role> findByRoleIds(@Param("roleIdList") List<Long> roleIdList);
 
     @Select("select * from role where role_id in (" +
             " select role_id from user_role where username=#{username})")

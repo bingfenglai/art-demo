@@ -34,11 +34,11 @@
 
     <dependencyManagement>
         <dependencies>
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-starter-security</artifactId>-->
-<!--                <version>${springboot.version}</version>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.springframework.boot</groupId>-->
+            <!--                <artifactId>spring-boot-starter-security</artifactId>-->
+            <!--                <version>${springboot.version}</version>-->
+            <!--            </dependency>-->
             <!-- 实现对 Spring Security OAuth2 的自动配置 -->
             <dependency>
                 <groupId>org.springframework.security.oauth.boot</groupId>

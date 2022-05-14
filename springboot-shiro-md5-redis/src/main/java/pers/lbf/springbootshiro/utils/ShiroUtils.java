@@ -18,14 +18,18 @@ import java.util.Objects;
  * <p>@date 2020/8/15 15:08</p>
  */
 public class ShiroUtils {
-    /** 私有构造器 **/
-    private ShiroUtils(){}
+    /**
+     * 私有构造器
+     **/
+    private ShiroUtils() {
+    }
 
     private static RedisSessionDAO redisSessionDAO = SpringContextUtil.getBean(RedisSessionDAO.class);
 
 
     /**
      * 获取当前用户session
+     *
      * @return
      */
     public static Session getSession() {
@@ -41,6 +45,7 @@ public class ShiroUtils {
 
     /**
      * 获取当前用户信息
+     *
      * @return
      */
     public static User getUserInfo() {
@@ -49,16 +54,17 @@ public class ShiroUtils {
 
     /**
      * 删除用户缓存
+     *
      * @param username
      * @param isRemoveSession
      */
-    public static void deleteCache(String username, boolean isRemoveSession){
+    public static void deleteCache(String username, boolean isRemoveSession) {
         //从缓存中获取Session
         Session session = null;
         Collection<Session> sessions = redisSessionDAO.getActiveSessions();
         User User;
         Object attribute = null;
-        for(Session sessionInfo : sessions){
+        for (Session sessionInfo : sessions) {
             //遍历Session,找到该用户名称对应的Session
             attribute = sessionInfo.getAttribute(DefaultSubjectContext.PRINCIPALS_SESSION_KEY);
             if (attribute == null) {
@@ -69,11 +75,11 @@ public class ShiroUtils {
                 continue;
             }
             if (Objects.equals(User.getUsername(), username)) {
-                session=sessionInfo;
+                session = sessionInfo;
                 break;
             }
         }
-        if (session == null||attribute == null) {
+        if (session == null || attribute == null) {
             return;
         }
         //删除session
@@ -85,7 +91,6 @@ public class ShiroUtils {
         Authenticator authc = securityManager.getAuthenticator();
         ((LogoutAware) authc).onLogout((SimplePrincipalCollection) attribute);
     }
-
 
 
 }

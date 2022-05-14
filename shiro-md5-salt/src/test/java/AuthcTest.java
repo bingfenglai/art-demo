@@ -12,14 +12,15 @@ import java.util.UUID;
  */
 public class AuthcTest {
     private CurrentSystemAuthenticator authenticator;
+
     @Before
     public void init() {
         this.authenticator = new CurrentSystemAuthenticator();
     }
 
     @Test
-    public void testAuthc(){
-        this.authenticator.authenticate("xiangbei","123");
+    public void testAuthc() {
+        this.authenticator.authenticate("xiangbei", "123");
     }
 
 

@@ -111,7 +111,7 @@ public class UserDO implements UserDetails {
      */
     @Override
     public boolean isAccountNonExpired() {
-        return this.status==1;
+        return this.status == 1;
     }
 
     /**
@@ -145,6 +145,6 @@ public class UserDO implements UserDetails {
      */
     @Override
     public boolean isEnabled() {
-        return this.status==1;
+        return this.status == 1;
     }
 }

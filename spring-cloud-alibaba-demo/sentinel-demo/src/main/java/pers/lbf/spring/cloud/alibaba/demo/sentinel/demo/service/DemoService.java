@@ -11,12 +11,10 @@ import pers.lbf.spring.cloud.alibaba.demo.sentinel.demo.vo.ResultVO;
 @Service
 public class DemoService {
 
-    public ResultVO<String> getInfo(){
+    public ResultVO<String> getInfo() {
         return new ResultVO<>("wxb: Java开发实践");
 
     }
-
-
 
 
 }

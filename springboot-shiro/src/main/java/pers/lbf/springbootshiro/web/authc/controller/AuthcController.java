@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import pers.lbf.springbootshiro.server.authc.service.AuthcService;
 import pers.lbf.springbootshiro.web.authc.pojo.vo.LoginVO;
 
-/**认证模块
+/**
+ * 认证模块
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/10/6 10:07
@@ -25,9 +27,8 @@ public class AuthcController {
     }
 
 
-
     @GetMapping("/unauthc")
-    public String unauthc(){
+    public String unauthc() {
         return "请先登录";
     }
 

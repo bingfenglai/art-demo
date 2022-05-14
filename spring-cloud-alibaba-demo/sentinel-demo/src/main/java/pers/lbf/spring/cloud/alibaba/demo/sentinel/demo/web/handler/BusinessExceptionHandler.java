@@ -13,6 +13,6 @@ public class BusinessExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
     public ResultVO runtimeExceptionHandlerMethod(RuntimeException e) {
-        return new ResultVO<>("505","运行时异常");
+        return new ResultVO<>("505", "运行时异常");
     }
 }

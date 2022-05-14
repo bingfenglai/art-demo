@@ -21,7 +21,9 @@ import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.HashMap;
 
-/**shiro配置类
+/**
+ * shiro配置类
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/10/6 9:11
@@ -58,22 +60,23 @@ public class ShiroConfig {
 
     /**
      * 创建ShiroFilter拦截器
+     *
      * @return ShiroFilterFactoryBean
      */
     @Bean(name = "shiroFilterFactoryBean")
-    public ShiroFilterFactoryBean getShiroFilterFactoryBean(DefaultWebSecurityManager securityManager){
+    public ShiroFilterFactoryBean getShiroFilterFactoryBean(DefaultWebSecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
         //配置不拦截路径和拦截路径，顺序不能反
         HashMap<String, String> map = new HashMap<>(5);
 
-        map.put("/authc/**","anon");
-        map.put("/login.html","anon");
-        map.put("/js/**","anon");
-        map.put("/css/**","anon");
+        map.put("/authc/**", "anon");
+        map.put("/login.html", "anon");
+        map.put("/js/**", "anon");
+        map.put("/css/**", "anon");
 
-        map.put("/**","authc");
+        map.put("/**", "authc");
         //覆盖默认的登录url
         shiroFilterFactoryBean.setLoginUrl("/authc/unauthc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
@@ -82,7 +85,7 @@ public class ShiroConfig {
     }
 
     @Bean
-    public Realm getRealm(){
+    public Realm getRealm() {
         //设置凭证匹配器，修改为hash凭证匹配器
         HashedCredentialsMatcher myCredentialsMatcher = new HashedCredentialsMatcher();
         //设置算法
@@ -100,24 +103,25 @@ public class ShiroConfig {
 
     /**
      * 创建shiro web应用下的安全管理器
+     *
      * @return DefaultWebSecurityManager
      */
     @Bean
-    public DefaultWebSecurityManager getSecurityManager( Realm realm){
+    public DefaultWebSecurityManager getSecurityManager(Realm realm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(realm);
-       securityManager.setSessionManager(sessionManager());
+        securityManager.setSessionManager(sessionManager());
         securityManager.setCacheManager(cacheManager());
         SecurityUtils.setSecurityManager(securityManager);
         return securityManager;
     }
 
 
-
     /**
      * 配置Redis管理器
-     * @Attention 使用的是shiro-redis开源插件
+     *
      * @return
+     * @Attention 使用的是shiro-redis开源插件
      */
     @Bean
     public RedisManager redisManager() {
@@ -127,7 +131,7 @@ public class ShiroConfig {
         redisManager.setTimeout(timeout);
         redisManager.setPassword(password);
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setMaxTotal(maxIdle+maxActive);
+        jedisPoolConfig.setMaxTotal(maxIdle + maxActive);
         jedisPoolConfig.setMaxIdle(maxIdle);
         jedisPoolConfig.setMinIdle(minIdle);
         redisManager.setJedisPoolConfig(jedisPoolConfig);
@@ -150,10 +154,9 @@ public class ShiroConfig {
 
     /**
      * SessionID生成器
-     *
      */
     @Bean
-    public ShiroSessionIdGenerator sessionIdGenerator(){
+    public ShiroSessionIdGenerator sessionIdGenerator() {
         return new ShiroSessionIdGenerator();
     }
 
@@ -172,8 +175,8 @@ public class ShiroConfig {
 
     /**
      * 配置Session管理器
-     * @Author Sans
      *
+     * @Author Sans
      */
     @Bean
     public DefaultWebSessionManager sessionManager() {

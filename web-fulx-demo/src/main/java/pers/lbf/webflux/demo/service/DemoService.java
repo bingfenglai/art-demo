@@ -18,6 +18,7 @@ public interface DemoService {
 
     /**
      * 模拟获取信息
+     *
      * @return info
      */
     String getInfo();

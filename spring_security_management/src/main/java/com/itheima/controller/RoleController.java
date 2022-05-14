@@ -17,16 +17,16 @@ public class RoleController {
     private RoleService roleService;
 
     @RequestMapping("/findAll")
-    public String findAll(Model model){
+    public String findAll(Model model) {
         List<SysRole> list = roleService.findAll();
         model.addAttribute("list", list);
         return "role-list";
     }
 
     @RequestMapping("/save")
-    public String save(SysRole role){
+    public String save(SysRole role) {
         roleService.save(role);
         return "redirect:findAll";
     }
-    
+
 }

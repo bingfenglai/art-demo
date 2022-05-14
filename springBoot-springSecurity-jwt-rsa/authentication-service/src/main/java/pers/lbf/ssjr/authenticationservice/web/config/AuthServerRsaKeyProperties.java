@@ -8,7 +8,9 @@ import javax.annotation.PostConstruct;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-/**解析公钥和私钥的配置类
+/**
+ * 解析公钥和私钥的配置类
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/9/3 10:42
@@ -24,13 +26,15 @@ public class AuthServerRsaKeyProperties {
     private PrivateKey privateKey;
 
 
-    /**加载文件当中的公钥、私钥
+    /**
+     * 加载文件当中的公钥、私钥
      * 被@PostConstruct修饰的方法会在服务器加载Servlet的时候运行，
      * 并且只会被服务器执行一次。PostConstruct在构造函数之后执行，
      * init（）方法之前执行。
+     *
+     * @throws Exception e
      * @author 赖柄沣 bingfengdev@aliyun.com
      * @date 2020-09-03 12:07:35
-     * @throws Exception e
      * @version 1.0
      */
     @PostConstruct

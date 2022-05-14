@@ -10,80 +10,86 @@ import java.util.Objects;
  */
 public class RpcResultDTO<T> implements Serializable {
 
-  /** 响应码 */
-  private String code;
+    /**
+     * 响应码
+     */
+    private String code;
 
-  /** 消息 */
-  private String message;
+    /**
+     * 消息
+     */
+    private String message;
 
-  /** 响应数据 */
-  private T data;
+    /**
+     * 响应数据
+     */
+    private T data;
 
-  public RpcResultDTO(String code, String message) {
-    this.code = code;
-    this.message = message;
-  }
-
-  public RpcResultDTO(T data) {
-    this.data = data;
-    this.code = "00000";
-    this.message = "success";
-  }
-
-  @Override
-  public String toString() {
-    return "RpcResultDTO{"
-        + "code='"
-        + code
-        + '\''
-        + ", message='"
-        + message
-        + '\''
-        + ", data="
-        + data
-        + '}';
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public RpcResultDTO(String code, String message) {
+        this.code = code;
+        this.message = message;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public RpcResultDTO(T data) {
+        this.data = data;
+        this.code = "00000";
+        this.message = "success";
     }
-    RpcResultDTO<?> that = (RpcResultDTO<?>) o;
-    return Objects.equals(code, that.code)
-        && Objects.equals(message, that.message)
-        && Objects.equals(data, that.data);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(code, message, data);
-  }
+    @Override
+    public String toString() {
+        return "RpcResultDTO{"
+                + "code='"
+                + code
+                + '\''
+                + ", message='"
+                + message
+                + '\''
+                + ", data="
+                + data
+                + '}';
+    }
 
-  public String getCode() {
-    return code;
-  }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RpcResultDTO<?> that = (RpcResultDTO<?>) o;
+        return Objects.equals(code, that.code)
+                && Objects.equals(message, that.message)
+                && Objects.equals(data, that.data);
+    }
 
-  public void setCode(String code) {
-    this.code = code;
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, message, data);
+    }
 
-  public String getMessage() {
-    return message;
-  }
+    public String getCode() {
+        return code;
+    }
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-  public T getData() {
-    return data;
-  }
+    public String getMessage() {
+        return message;
+    }
 
-  public void setData(T data) {
-    this.data = data;
-  }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
 }

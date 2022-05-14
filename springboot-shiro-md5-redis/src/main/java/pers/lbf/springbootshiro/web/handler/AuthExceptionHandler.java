@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 
-/**shiro异常处理
+/**
+ * shiro异常处理
+ *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
  * @date 2020/10/7 18:01
@@ -48,7 +50,7 @@ public class AuthExceptionHandler {
 
     @ExceptionHandler(UnauthorizedException.class)
     @ResponseBody
-    public String unauthorizedExceptionHandlerMethod(UnauthorizedException e){
+    public String unauthorizedExceptionHandlerMethod(UnauthorizedException e) {
         return "未授权！请联系管理员授权";
     }
 }

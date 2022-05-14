@@ -17,8 +17,8 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @EnableWebFlux
 public class ServiceGatewayApplication {
 
-  public static void main(String[] args) {
+    public static void main(String[] args) {
 
-    SpringApplication.run(ServiceGatewayApplication.class, args);
-  }
+        SpringApplication.run(ServiceGatewayApplication.class, args);
+    }
 }

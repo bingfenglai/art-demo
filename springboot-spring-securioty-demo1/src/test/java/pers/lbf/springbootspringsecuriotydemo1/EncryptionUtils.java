@@ -17,7 +17,7 @@ public class EncryptionUtils {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Test
-    public void test1(){
+    public void test1() {
 
         String user = passwordEncoder.encode("admin");
         System.out.println(user);

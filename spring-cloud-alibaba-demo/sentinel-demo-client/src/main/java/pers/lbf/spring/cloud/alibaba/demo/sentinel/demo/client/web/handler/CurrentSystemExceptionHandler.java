@@ -14,7 +14,7 @@ import pers.lbf.spring.cloud.alibaba.demo.sentinel.demo.client.pojo.vo.ResultVO;
 public class CurrentSystemExceptionHandler {
 
     @ExceptionHandler(HttpServerErrorException.InternalServerError.class)
-    public ResultVO internalServerErrorHandlerMethod(HttpServerErrorException.InternalServerError err){
-        return new ResultVO<>("500",err.getMessage());
+    public ResultVO internalServerErrorHandlerMethod(HttpServerErrorException.InternalServerError err) {
+        return new ResultVO<>("500", err.getMessage());
     }
 }

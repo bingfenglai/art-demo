@@ -15,16 +15,18 @@ public class RsaTest {
     private String privateFile = "D:\\Desktop\\rsa_key";
 
 
-    /**生成公钥和私钥
+    /**
+     * 生成公钥和私钥
+     *
+     * @throws Exception
      * @author 赖柄沣 bingfengdev@aliyun.com
      * @date 2020-09-03 10:32:16
-     * @throws Exception
      * @version 1.0
      */
     @Test
-    public void generateKey() throws Exception{
+    public void generateKey() throws Exception {
 
-        RsaUtils.generateKey(publicFile,privateFile,"Java开发实践",2048);
+        RsaUtils.generateKey(publicFile, privateFile, "Java开发实践", 2048);
 
     }
 

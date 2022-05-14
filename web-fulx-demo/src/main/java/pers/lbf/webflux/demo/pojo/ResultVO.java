@@ -19,7 +19,7 @@ public class ResultVO implements Serializable {
     }
 
     public static ResultVO ok() {
-        return new ResultVO("00000","success");
+        return new ResultVO("00000", "success");
     }
 
     @Override

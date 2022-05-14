@@ -16,7 +16,7 @@ public class UserController {
 
     @GetMapping("/")
     @PreAuthorize("hasAuthority('user:info')")
-    public String getUser(){
+    public String getUser() {
         return "success";
     }
 }

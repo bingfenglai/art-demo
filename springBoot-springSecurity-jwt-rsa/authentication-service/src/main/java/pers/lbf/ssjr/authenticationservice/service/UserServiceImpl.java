@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if (username == null){
+        if (username == null) {
             return null;
         }
 
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserDetailsService {
 
         List<RoleDO> roleList = roleDao.findByUserId(user.getId());
 
-        List<SimpleGrantedAuthority> list  = new ArrayList<> ();
+        List<SimpleGrantedAuthority> list = new ArrayList<>();
         for (RoleDO roleDO : roleList) {
             List<PermissionDO> permissionListItems = permissonDao.findByRoleId(roleDO.getId());
             for (PermissionDO permissionDO : permissionListItems) {

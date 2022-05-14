@@ -1,0 +1,18 @@
+server:
+  port: 8848
+spring:
+  application:
+    name: @artifactId@
+
+  kafka:
+    bootstrap-servers: 192.168.3.6:9092
+    consumer:
+      enable-auto-commit: false
+      auto-commit-interval: 100
+      auto-offset-reset: earliest
+      max-poll-records: 500
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      ack-mode: manual
+      poll-timeout: 500s

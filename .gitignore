@@ -6,3 +6,9 @@
 /springboot-spring-securioty-demo1/mvnw
 /springBoot-springSecurity-jwt-rsa/.idea
 /oauth-demo
+/springboot-kafkaDemo/kafka-consumer/.mvn
+/springboot-kafkaDemo/kafka-consumer/mvnw.cmd
+/springboot-kafkaDemo/kafka-consumer/mvnw
+/springboot-kafkaDemo/kafka-producer/mvnw.cmd
+/springboot-kafkaDemo/kafka-producer/mvnw
+/springboot-kafkaDemo/kafka-producer/.mvn

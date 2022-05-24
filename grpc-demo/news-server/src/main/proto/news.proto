@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+// 是否生成多个类
+option java_multiple_files = false;
+
+// 生成代码软件包位置
+option java_package = "pers.lbf.news.proto";

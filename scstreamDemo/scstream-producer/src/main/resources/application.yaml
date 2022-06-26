@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    stream:
+      bindings:
+        outputkafka-out-0:
+          destination: test1
+        slink-in-0:
+          destination: test1
+          auto-commit-offset: false
+      function:
+        definition: slink
+  kafka:
+    consumer:
+      enable-auto-commit: false
+

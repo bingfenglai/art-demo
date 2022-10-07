@@ -15,31 +15,23 @@
  *
  */
 
-package pers.lbf.ssc;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+package pers.lbf.ssc.fn;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/8/5 23:27
+ * @date 2022/9/17 22:32
  */
-@Configuration
-@EnableTransactionManagement
-public class ApiConfig {
+public class Main {
 
-    public static final String BAI_DU = "https://www.baidu.com";
+    public static void main(String[] args) {
+        PrintFn fn = System.err::println;
+        doPrint(fn);
+    }
 
-    @Value("${spring.application.name}")
-    private String val;
-
-//    @Bean
-//    public PayService createPayService(OrderService orderService) {
-//        return new PayService(orderService);
-//    }
-
+    public static void doPrint(PrintFn fn) {
+        fn.print("gege");
+    }
 }

@@ -17,29 +17,28 @@
 
 package pers.lbf.ssc;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.scheduling.annotation.Async;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/8/5 23:27
+ * @date 2022/8/23 23:12
  */
-@Configuration
-@EnableTransactionManagement
-public class ApiConfig {
+public class UserServiceProxy extends UserService {
 
-    public static final String BAI_DU = "https://www.baidu.com";
+    private UserService target;
 
-    @Value("${spring.application.name}")
-    private String val;
+    public UserServiceProxy(OrderService orderService) {
+        super(orderService);
+    }
 
-//    @Bean
-//    public PayService createPayService(OrderService orderService) {
-//        return new PayService(orderService);
-//    }
-
+    @Async
+    @Override
+    public void test() {
+        // @Before 切面逻辑
+        target.test();
+        // ...
+    }
 }

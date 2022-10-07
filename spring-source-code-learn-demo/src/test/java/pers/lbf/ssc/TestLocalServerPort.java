@@ -17,29 +17,26 @@
 
 package pers.lbf.ssc;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/8/5 23:27
+ * @date 2022/9/14 22:37
  */
-@Configuration
-@EnableTransactionManagement
-public class ApiConfig {
+@SpringBootTest
+public class TestLocalServerPort {
 
-    public static final String BAI_DU = "https://www.baidu.com";
+    @LocalServerPort
+    private String port;
 
-    @Value("${spring.application.name}")
-    private String val;
+    @Test
+    public void test() {
 
-//    @Bean
-//    public PayService createPayService(OrderService orderService) {
-//        return new PayService(orderService);
-//    }
-
+        System.out.println(port);
+        
+    }
 }

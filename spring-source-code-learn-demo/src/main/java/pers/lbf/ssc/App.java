@@ -20,6 +20,7 @@ package pers.lbf.ssc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -33,6 +34,7 @@ import javax.annotation.Resource;
  */
 @SpringBootApplication
 @EnableFeignClients
+@EnableAspectJAutoProxy
 public class App {
 
     @Resource
@@ -48,4 +50,14 @@ public class App {
         String q = demoApi.getQ("java");
         System.out.println(q);
     }
+
+//    @Bean
+//    public PayService createPayService(OrderService orderService) {
+//        return new PayService(orderService);
+//    }
+
+//    @Bean(autowire = Autowire.BY_NAME)
+//    public PayService createPayService2(OrderService orderService) {
+//        return new PayService(orderService);
+//    }
 }

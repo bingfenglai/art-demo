@@ -17,9 +17,12 @@
 
 package pers.lbf.ssc;
 
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 
@@ -45,5 +48,16 @@ public class UserService implements InitializingBean {
     @PostConstruct
     public void initUserService() {
         System.out.println("UserService#initUserService");
+    }
+
+
+    @Transactional(propagation = Propagation.NEVER)
+    public void test() {
+        System.out.println("执行test()");
+
+//        applicationContext.getBean();
+//
+        UserService userService = (UserService) AopContext.currentProxy();
+        userService.test();
     }
 }

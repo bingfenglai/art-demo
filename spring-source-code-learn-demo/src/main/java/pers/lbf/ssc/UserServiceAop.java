@@ -17,29 +17,30 @@
 
 package pers.lbf.ssc;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/8/5 23:27
+ * @date 2022/8/23 23:16
  */
-@Configuration
-@EnableTransactionManagement
-public class ApiConfig {
+@Component
+@Aspect
+public class UserServiceAop {
 
-    public static final String BAI_DU = "https://www.baidu.com";
+    @Before("execution(public void pers.lbf.ssc.UserService.test())")
+    public void executeBefore(JoinPoint joinPoint) {
+        System.out.println("before execution pers.lbf.ssc.UserService.test()");
+        System.out.println("目标参数：" + Arrays.toString(joinPoint.getArgs()));
+        System.out.println("类型：" + joinPoint.getKind());
+    }
 
-    @Value("${spring.application.name}")
-    private String val;
-
-//    @Bean
-//    public PayService createPayService(OrderService orderService) {
-//        return new PayService(orderService);
-//    }
 
 }

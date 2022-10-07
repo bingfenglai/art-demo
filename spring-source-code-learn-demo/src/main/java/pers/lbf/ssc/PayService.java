@@ -17,29 +17,24 @@
 
 package pers.lbf.ssc;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/8/5 23:27
+ * @date 2022/9/14 23:07
  */
-@Configuration
-@EnableTransactionManagement
-public class ApiConfig {
 
-    public static final String BAI_DU = "https://www.baidu.com";
+public class PayService {
 
-    @Value("${spring.application.name}")
-    private String val;
+    private OrderService orderService;
 
-//    @Bean
-//    public PayService createPayService(OrderService orderService) {
-//        return new PayService(orderService);
+    public PayService(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+//    @PrototypeBean
+//    public OrderService createOrderService() {
+//        return new OrderService();
 //    }
-
 }

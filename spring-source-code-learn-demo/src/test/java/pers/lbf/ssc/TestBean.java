@@ -19,6 +19,8 @@ package pers.lbf.ssc;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
+import pers.lbf.ssc.service.OrderService;
+import pers.lbf.ssc.service.PayService;
 
 /**
  * TODO

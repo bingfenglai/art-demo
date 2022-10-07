@@ -19,6 +19,7 @@ package pers.lbf.ssc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import pers.lbf.ssc.annotation.LocalServerPort;
 
 /**
  * TODO
@@ -37,6 +38,6 @@ public class TestLocalServerPort {
     public void test() {
 
         System.out.println(port);
-        
+
     }
 }

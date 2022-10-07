@@ -2,6 +2,7 @@ package pers.lbf.ssc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import pers.lbf.ssc.service.UserService;
 
 import javax.annotation.Resource;
 

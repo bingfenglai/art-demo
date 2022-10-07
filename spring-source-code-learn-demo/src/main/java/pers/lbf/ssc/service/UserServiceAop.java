@@ -15,30 +15,32 @@
  *
  */
 
-package pers.lbf.ssc;
+package pers.lbf.ssc.service;
 
-import org.springframework.scheduling.annotation.Async;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/8/23 23:12
+ * @date 2022/8/23 23:16
  */
-public class UserServiceProxy extends UserService {
+@Component
+@Aspect
+public class UserServiceAop {
 
-    private UserService target;
-
-    public UserServiceProxy(OrderService orderService) {
-        super(orderService);
+    @Before("execution(public void pers.lbf.ssc.service.UserService.test())")
+    public void executeBefore(JoinPoint joinPoint) {
+        System.out.println("before execution pers.lbf.ssc.service.UserService.test()");
+        System.out.println("目标参数：" + Arrays.toString(joinPoint.getArgs()));
+        System.out.println("类型：" + joinPoint.getKind());
     }
 
-    @Async
-    @Override
-    public void test() {
-        // @Before 切面逻辑
-        target.test();
-        // ...
-    }
+
 }

@@ -15,17 +15,24 @@
  *
  */
 
-package pers.lbf.ssc;
+package pers.lbf.ssc.annotation;
 
-import pers.lbf.ssc.annotation.CustomBean;
+import org.springframework.beans.factory.annotation.Value;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/9/19 21:44
+ * @date 2022/9/14 22:36
  */
-@CustomBean
-public class GoodsService {
+@Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Value("${server.port}")
+public @interface LocalServerPort {
 }

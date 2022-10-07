@@ -15,23 +15,31 @@
  *
  */
 
-package pers.lbf.ssc;
+package pers.lbf.ssc.config;
 
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/7/24 22:27
+ * @date 2022/8/5 23:27
  */
-@FeignClient(name = "demo-service", url = ApiConfig.BAI_DU)
-public interface DemoApi {
+@Configuration
+@EnableTransactionManagement
+public class ApiConfig {
 
+    public static final String BAI_DU = "https://www.baidu.com";
 
-    @GetMapping
-    String getQ(@RequestParam("wd") String w);
+    @Value("${spring.application.name}")
+    private String val;
+
+//    @Bean
+//    public PayService createPayService(OrderService orderService) {
+//        return new PayService(orderService);
+//    }
+
 }

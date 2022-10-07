@@ -15,26 +15,27 @@
  *
  */
 
-package pers.lbf.ssc;
+package pers.lbf.ssc.config;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import pers.lbf.ssc.annotation.CustomBean;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/9/14 23:07
+ * @date 2022/9/18 21:30
  */
+@ComponentScan(value = "pers.lbf.ssc",
+        includeFilters = @ComponentScan.Filter(
+                type = FilterType.ANNOTATION,
+                classes = CustomBean.class
+        ))
+@Configuration
+public class AppConfig {
 
-public class PayService {
 
-    private OrderService orderService;
-
-    public PayService(OrderService orderService) {
-        this.orderService = orderService;
-    }
-
-//    @PrototypeBean
-//    public OrderService createOrderService() {
-//        return new OrderService();
-//    }
 }

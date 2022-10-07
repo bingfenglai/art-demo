@@ -15,7 +15,7 @@
  *
  */
 
-package pers.lbf.ssc;
+package pers.lbf.ssc.service;
 
 import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.InitializingBean;

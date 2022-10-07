@@ -15,21 +15,26 @@
  *
  */
 
-package pers.lbf.ssc;
-
-import org.springframework.stereotype.Component;
+package pers.lbf.ssc.service;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/8/5 23:18
+ * @date 2022/9/14 23:07
  */
-@Component
-public class OrderService {
 
-    public OrderService() {
-        System.out.println("OrderService");
+public class PayService {
+
+    private OrderService orderService;
+
+    public PayService(OrderService orderService) {
+        this.orderService = orderService;
     }
+
+//    @PrototypeBean
+//    public OrderService createOrderService() {
+//        return new OrderService();
+//    }
 }

@@ -15,32 +15,21 @@
  *
  */
 
-package pers.lbf.ssc;
+package pers.lbf.ssc.service;
 
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/8/23 23:16
+ * @date 2022/8/5 23:18
  */
 @Component
-@Aspect
-public class UserServiceAop {
+public class OrderService {
 
-    @Before("execution(public void pers.lbf.ssc.UserService.test())")
-    public void executeBefore(JoinPoint joinPoint) {
-        System.out.println("before execution pers.lbf.ssc.UserService.test()");
-        System.out.println("目标参数：" + Arrays.toString(joinPoint.getArgs()));
-        System.out.println("类型：" + joinPoint.getKind());
+    public OrderService() {
+        System.out.println("OrderService");
     }
-
-
 }

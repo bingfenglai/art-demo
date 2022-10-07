@@ -15,27 +15,24 @@
  *
  */
 
-package pers.lbf.ssc;
+package pers.lbf.ssc.api;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
-import pers.lbf.ssc.annotation.CustomBean;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import pers.lbf.ssc.config.ApiConfig;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/9/18 21:30
+ * @date 2022/7/24 22:27
  */
-@ComponentScan(value = "pers.lbf.ssc",
-        includeFilters = @ComponentScan.Filter(
-                type = FilterType.ANNOTATION,
-                classes = CustomBean.class
-        ))
-@Configuration
-public class AppConfig {
+@FeignClient(name = "demo-service", url = ApiConfig.BAI_DU)
+public interface DemoApi {
 
 
+    @GetMapping
+    String getQ(@RequestParam("wd") String w);
 }

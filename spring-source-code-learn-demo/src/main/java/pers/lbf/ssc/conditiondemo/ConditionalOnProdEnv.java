@@ -15,25 +15,23 @@
  *
  */
 
-package pers.lbf.ssc.service;
+package pers.lbf.ssc.conditiondemo;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Conditional;
+
+import java.lang.annotation.*;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/8/5 23:18
+ * @date 2022/10/7 16:50
  */
-@Component
-public class OrderService {
-
-    @Autowired
-    GoodsService goodsService;
-
-    public OrderService() {
-        System.out.println("OrderService");
-    }
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Documented
+@Conditional({OnProdEnvironmentCondition.class})
+public @interface ConditionalOnProdEnv {
+    String value() default "false";
 }

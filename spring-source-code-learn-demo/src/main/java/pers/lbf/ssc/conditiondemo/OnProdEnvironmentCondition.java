@@ -15,25 +15,24 @@
  *
  */
 
-package pers.lbf.ssc.service;
+package pers.lbf.ssc.conditiondemo;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Condition;
+import org.springframework.context.annotation.ConditionContext;
+import org.springframework.core.type.AnnotatedTypeMetadata;
+
+import java.util.Arrays;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/8/5 23:18
+ * @date 2022/10/7 16:38
  */
-@Component
-public class OrderService {
-
-    @Autowired
-    GoodsService goodsService;
-
-    public OrderService() {
-        System.out.println("OrderService");
+public class OnProdEnvironmentCondition implements Condition {
+    @Override
+    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+        return Arrays.stream(conditionContext.getEnvironment().getActiveProfiles()).anyMatch("prod"::equals);
     }
 }

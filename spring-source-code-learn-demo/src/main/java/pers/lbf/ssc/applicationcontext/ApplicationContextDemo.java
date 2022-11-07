@@ -21,6 +21,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * TODO
@@ -30,6 +31,7 @@ import org.springframework.stereotype.Component;
  * @date 2022/10/20 21:26
  */
 @Component
+@Transactional
 public class ApplicationContextDemo implements ApplicationContextAware {
 
     static ApplicationContext ctx;

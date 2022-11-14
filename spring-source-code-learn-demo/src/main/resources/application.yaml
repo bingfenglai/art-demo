@@ -16,3 +16,13 @@ spring:
       ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.MySQLDialect
+
+thread-pool:
+  thread-name-prefix: default-exe
+  core-pool-size: 1
+  max-pool-size: 4
+  queue-capacity: 10
+  keep-alive-seconds: 30
+  allow-core-thread-time-out: false
+  handler-type: java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy
+

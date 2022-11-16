@@ -15,7 +15,7 @@
  *
  */
 
-package pers.lbf.ssc.dynamic.event;
+package pers.lbf.ssc.dynamic.threadpool.event;
 
 import org.springframework.context.ApplicationEvent;
 

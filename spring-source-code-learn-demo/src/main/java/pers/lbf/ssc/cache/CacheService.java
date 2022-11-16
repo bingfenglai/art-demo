@@ -29,4 +29,8 @@ public interface CacheService {
     Boolean set(String key, Object value);
 
     Object get(String key);
+
+    default void remove(String key) {
+        System.out.println("执行过期逻辑");
+    }
 }

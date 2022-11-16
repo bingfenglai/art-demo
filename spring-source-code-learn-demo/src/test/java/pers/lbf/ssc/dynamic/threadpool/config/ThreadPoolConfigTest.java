@@ -1,4 +1,4 @@
-package pers.lbf.ssc.dynamic.config;
+package pers.lbf.ssc.dynamic.threadpool.config;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

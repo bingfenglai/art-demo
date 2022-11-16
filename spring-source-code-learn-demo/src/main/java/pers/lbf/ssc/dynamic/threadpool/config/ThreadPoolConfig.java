@@ -15,12 +15,13 @@
  *
  */
 
-package pers.lbf.ssc.dynamic.config;
+package pers.lbf.ssc.dynamic.threadpool.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import javax.annotation.Resource;
 import java.util.concurrent.Executor;
 
 /**
@@ -35,16 +36,19 @@ public class ThreadPoolConfig {
 
     public static final String THREAD_POOL_EXE_NAME = "default-exe";
 
+    @Resource
+    ThreadPoolPropertyConfig threadPoolPropertyConfig;
+
     @Bean(THREAD_POOL_EXE_NAME)
-    public Executor createThreadPoolExecutor(ThreadPoolPropertyConfig config) throws IllegalAccessException, InstantiationException {
+    public Executor createThreadPoolExecutor() throws IllegalAccessException, InstantiationException {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(config.getCorePoolSize());
-        executor.setMaxPoolSize(config.getMaxPoolSize());
-        executor.setQueueCapacity(config.getQueueCapacity());
-        executor.setThreadNamePrefix(config.getThreadNamePrefix());
-        executor.setAllowCoreThreadTimeOut(config.getAllowCoreThreadTimeOut());
-        executor.setKeepAliveSeconds(config.getKeepAliveSeconds());
-        executor.setRejectedExecutionHandler(config.getHandlerType().newInstance());
+        executor.setCorePoolSize(threadPoolPropertyConfig.getCorePoolSize());
+        executor.setMaxPoolSize(threadPoolPropertyConfig.getMaxPoolSize());
+        executor.setQueueCapacity(threadPoolPropertyConfig.getQueueCapacity());
+        executor.setThreadNamePrefix(threadPoolPropertyConfig.getThreadNamePrefix());
+        executor.setAllowCoreThreadTimeOut(threadPoolPropertyConfig.getAllowCoreThreadTimeOut());
+        executor.setKeepAliveSeconds(threadPoolPropertyConfig.getKeepAliveSeconds());
+        executor.setRejectedExecutionHandler(threadPoolPropertyConfig.getHandlerType().newInstance());
         return executor;
     }
 

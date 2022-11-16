@@ -26,6 +26,7 @@ import pers.lbf.ssc.cache.CacheService;
  * @version 1.0
  * @date 2022/11/14 23:18
  */
+
 public class DefaultCacheService implements CacheService {
     @Override
     public Boolean set(String key, Object value) {

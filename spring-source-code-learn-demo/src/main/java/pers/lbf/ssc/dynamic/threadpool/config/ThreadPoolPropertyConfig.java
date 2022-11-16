@@ -15,7 +15,7 @@
  *
  */
 
-package pers.lbf.ssc.dynamic.config;
+package pers.lbf.ssc.dynamic.threadpool.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;

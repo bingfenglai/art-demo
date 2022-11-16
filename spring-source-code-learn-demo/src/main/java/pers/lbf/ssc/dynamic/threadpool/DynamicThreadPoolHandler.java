@@ -17,15 +17,15 @@
 
 package pers.lbf.ssc.dynamic.threadpool;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import pers.lbf.ssc.cache.CacheService;
-import pers.lbf.ssc.dynamic.config.ThreadPoolConfig;
-import pers.lbf.ssc.dynamic.event.ThreadPoolConfigRefreshEvent;
+import pers.lbf.ssc.dynamic.threadpool.constants.ConfigSourceTypeEnums;
+import pers.lbf.ssc.dynamic.threadpool.event.ThreadPoolConfigRefreshEvent;
+import pers.lbf.ssc.dynamic.threadpool.refresh.RefreshDtpConfig;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * TODO
@@ -35,38 +35,30 @@ import javax.annotation.Resource;
  * @date 2022/11/14 21:01
  */
 @Component
+@Slf4j
 public class DynamicThreadPoolHandler {
 
-    @Resource
-    CacheService cacheService;
+    @Autowired
+    private List<RefreshDtpConfig> refreshDtpConfigs;
 
-    static final String dtpKey = ThreadPoolConfig.THREAD_POOL_EXE_NAME;
 
-    @EventListener(ThreadPoolConfigRefreshEvent.class)
-    public void resolveThreadPoolConfigRefresh() {
-        // 1.获取新的配置信息
-        // 2.生成md5
-        // 3.与旧的md5比较，如果不一致则获取线程池并更新参数
-        // 4.如果一致，则忽略配置更新
+    @EventListener
+    public void resolveThreadPoolConfigRefresh(ThreadPoolConfigRefreshEvent event) {
+        //获取线程池并更新参数
+
+        ConfigSourceTypeEnums type = (ConfigSourceTypeEnums) event.getSource();
+
+        for (RefreshDtpConfig refreshDtpConfig : refreshDtpConfigs) {
+            boolean flag = refreshDtpConfig.refreshDtpConfig(type);
+            if (flag) {
+                log.info("线程池更新完成，source={}", type.name());
+                break;
+            }
+        }
+
         // 5.若更新失败则回滚到旧的配置
         // 6.调用通知接口，通知线程池变更结果。
         // 7.记录变更日志
-    }
-
-    /**
-     * 将启动时初始化的线程池配置的摘要信息存入缓存
-     */
-    @PostConstruct
-    public void init() {
-
-    }
-
-    /**
-     * 清除缓存当中的md5
-     */
-    @PreDestroy
-    public void destroy() {
-
     }
 
 

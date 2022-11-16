@@ -15,39 +15,18 @@
  *
  */
 
-package pers.lbf.ssc.cache.impl;
-
-import org.springframework.stereotype.Service;
-import pers.lbf.ssc.cache.CacheService;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+package pers.lbf.ssc.dynamic.threadpool.constants;
 
 /**
  * TODO
  *
  * @author 赖柄沣 bingfengdev@aliyun.com
  * @version 1.0
- * @date 2022/11/14 23:19
+ * @date 2022/11/16 21:34
  */
-@Service
-public class LocalCacheService implements CacheService {
+public enum ConfigSourceTypeEnums {
 
-    private final Map<String, Object> map = new ConcurrentHashMap();
+    DATABASE,
 
-    @Override
-    public Boolean set(String key, Object value) {
-        this.map.put(key, value);
-        return true;
-    }
-
-    @Override
-    public Object get(String key) {
-        return this.map.get(key);
-    }
-
-    @Override
-    public void remove(String key) {
-        this.map.remove(key);
-    }
+    PROPERTY;
 }
